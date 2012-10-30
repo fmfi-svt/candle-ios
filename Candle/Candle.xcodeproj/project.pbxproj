@@ -226,7 +226,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0450;
-				ORGANIZATIONNAME = "Pejko Salik";
+				ORGANIZATIONNAME = "Peter Sulik";
 			};
 			buildConfigurationList = 86D2EC0E16401AAD002428F1 /* Build configuration list for PBXProject "Candle" */;
 			compatibilityVersion = "Xcode 3.2";
