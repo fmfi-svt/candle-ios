@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		86850807164589900049FE39 /* 20-gear2.png in Resources */ = {isa = PBXBuildFile; fileRef = 86850806164589900049FE39 /* 20-gear2.png */; };
+		8685080A16458A150049FE39 /* 140-gradhat.png in Resources */ = {isa = PBXBuildFile; fileRef = 8685080916458A150049FE39 /* 140-gradhat.png */; };
 		86D2EC1916401AAD002428F1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86D2EC1816401AAD002428F1 /* UIKit.framework */; };
 		86D2EC1B16401AAD002428F1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86D2EC1A16401AAD002428F1 /* Foundation.framework */; };
 		86D2EC1D16401AAD002428F1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86D2EC1C16401AAD002428F1 /* CoreGraphics.framework */; };
@@ -42,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		86850806164589900049FE39 /* 20-gear2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "20-gear2.png"; path = "../../../../Downloads/glyphish-icons/PNG icons/20-gear2.png"; sourceTree = "<group>"; };
+		8685080916458A150049FE39 /* 140-gradhat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "140-gradhat.png"; path = "../../../../Downloads/glyphish-icons/PNG icons/140-gradhat.png"; sourceTree = "<group>"; };
 		86D2EC1416401AAD002428F1 /* Candle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Candle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86D2EC1816401AAD002428F1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		86D2EC1A16401AAD002428F1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -150,6 +154,8 @@
 		86D2EC1F16401AAD002428F1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8685080916458A150049FE39 /* 140-gradhat.png */,
+				86850806164589900049FE39 /* 20-gear2.png */,
 				86D2EC2016401AAD002428F1 /* Candle-Info.plist */,
 				86D2EC2116401AAD002428F1 /* InfoPlist.strings */,
 				86D2EC2416401AAD002428F1 /* main.m */,
@@ -261,6 +267,8 @@
 				86D2EC3C16401AAE002428F1 /* first@2x.png in Resources */,
 				86D2EC4116401AAE002428F1 /* second.png in Resources */,
 				86D2EC4316401AAE002428F1 /* second@2x.png in Resources */,
+				86850807164589900049FE39 /* 20-gear2.png in Resources */,
+				8685080A16458A150049FE39 /* 140-gradhat.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,6 +491,7 @@
 				86D2EC5D16401AAF002428F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		86D2EC5E16401AAF002428F1 /* Build configuration list for PBXNativeTarget "CandleTests" */ = {
 			isa = XCConfigurationList;
@@ -491,6 +500,7 @@
 				86D2EC6016401AAF002428F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
