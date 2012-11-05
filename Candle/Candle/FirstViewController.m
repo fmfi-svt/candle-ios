@@ -2,8 +2,8 @@
 //  FirstViewController.m
 //  Candle
 //
-//  Created by Pejko Salik on 10/30/12.
-//  Copyright (c) 2012 Pejko Salik. All rights reserved.
+//  Created by Peter Sulik on 10/30/12.
+//  Copyright (c) 2012 Peter Sulik. All rights reserved.
 //
 
 #import "FirstViewController.h"
@@ -18,6 +18,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -30,31 +31,27 @@
 
 
 
-
-
-
-
-
-- (void)degreeConvert:(id)sender
+- (void)vypisRozvrh:(id)sender
 {
-    double fahren = [tempTextBox.text doubleValue];
-    double celsius = (fahren - 32) / 1.8;
+    NSArray * predmety = [NSArray arrayWithObjects: @"telesna", @"matematika", @"pocitace", nil];  
+  //  NSMutableArray *array = [NSMutableArray arrayWithObjects: @"one", @"two", @"three", @"four", nil];
     
-    [tempTextBox resignFirstResponder];
+     NSString *tempPredmety;
     
-    NSString *convertResult = [[NSString alloc] initWithFormat: @"Celsius: %f", celsius];
-    calcResult.text = convertResult;
+    for (NSString * str in predmety) {
+        tempPredmety = [NSString stringWithFormat:@"%@, %@", tempPredmety, str];
+      //  tempPredmety = [tempPredmety stringByAppendingString:str];
+    }
+    rozvrhLabel.text = tempPredmety;
+
 }
+
 
 - (void)backgroundTouchedHideKeyboard:(id)sender
 {
     [tempTextBox resignFirstResponder];
 }
 
-- (void)writeRozvrh:(id)sender
-{
-
-}
 
 
 
@@ -67,7 +64,7 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
     self.candleNameTextBox = nil;
-    self.calcResult = nil;
+    self.rozvrhLabel = nil;
 }
 
 @end

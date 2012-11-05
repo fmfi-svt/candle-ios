@@ -2,8 +2,8 @@
 //  main.m
 //  Candle
 //
-//  Created by Pejko Salik on 10/30/12.
-//  Copyright (c) 2012 Pejko Salik. All rights reserved.
+//  Created by Peter Sulik on 10/30/12.
+//  Copyright (c) 2012 Peter Sulik. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

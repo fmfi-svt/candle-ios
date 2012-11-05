@@ -2,8 +2,8 @@
 //  FirstViewController.h
 //  Candle
 //
-//  Created by Pejko Salik on 10/30/12.
-//  Copyright (c) 2012 Pejko Salik. All rights reserved.
+//  Created by Peter Sulik on 10/30/12.
+//  Copyright (c) 2012 Peter Sulik. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -17,8 +17,8 @@
 @property (nonatomic, retain) IBOutlet UITextField *candleNameTextBox;
 @property (nonatomic, retain) IBOutlet UITableView *tabulkaRozvrh;
 
-- (IBAction)degreeConvert:(id)sender;
-- (IBAction)writeRozvrh:(id)sender;
+
+- (IBAction)vypisRozvrh:(id)sender;
 - (IBAction)backgroundTouchedHideKeyboard:(id)sender;
 @end
 
