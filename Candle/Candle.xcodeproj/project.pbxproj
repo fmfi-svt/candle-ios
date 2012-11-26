@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		86850807164589900049FE39 /* 20-gear2.png in Resources */ = {isa = PBXBuildFile; fileRef = 86850806164589900049FE39 /* 20-gear2.png */; };
 		8685080A16458A150049FE39 /* 140-gradhat.png in Resources */ = {isa = PBXBuildFile; fileRef = 8685080916458A150049FE39 /* 140-gradhat.png */; };
+		868CF7621662D53C00DBD9BC /* ZoznamPredmetov.m in Sources */ = {isa = PBXBuildFile; fileRef = 868CF7611662D53C00DBD9BC /* ZoznamPredmetov.m */; };
+		868CF7661662DFCC00DBD9BC /* Predmet.m in Sources */ = {isa = PBXBuildFile; fileRef = 868CF7651662DFCC00DBD9BC /* Predmet.m */; };
 		86D2EC1916401AAD002428F1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86D2EC1816401AAD002428F1 /* UIKit.framework */; };
 		86D2EC1B16401AAD002428F1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86D2EC1A16401AAD002428F1 /* Foundation.framework */; };
 		86D2EC1D16401AAD002428F1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86D2EC1C16401AAD002428F1 /* CoreGraphics.framework */; };
@@ -46,6 +48,10 @@
 /* Begin PBXFileReference section */
 		86850806164589900049FE39 /* 20-gear2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "20-gear2.png"; path = "../../../../Downloads/glyphish-icons/PNG icons/20-gear2.png"; sourceTree = "<group>"; };
 		8685080916458A150049FE39 /* 140-gradhat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "140-gradhat.png"; path = "../../../../Downloads/glyphish-icons/PNG icons/140-gradhat.png"; sourceTree = "<group>"; };
+		868CF7601662D53C00DBD9BC /* ZoznamPredmetov.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoznamPredmetov.h; sourceTree = "<group>"; };
+		868CF7611662D53C00DBD9BC /* ZoznamPredmetov.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoznamPredmetov.m; sourceTree = "<group>"; };
+		868CF7641662DFCC00DBD9BC /* Predmet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Predmet.h; sourceTree = "<group>"; };
+		868CF7651662DFCC00DBD9BC /* Predmet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Predmet.m; sourceTree = "<group>"; };
 		86D2EC1416401AAD002428F1 /* Candle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Candle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86D2EC1816401AAD002428F1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		86D2EC1A16401AAD002428F1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -147,6 +153,10 @@
 				86D2EC4016401AAE002428F1 /* second.png */,
 				86D2EC4216401AAE002428F1 /* second@2x.png */,
 				86D2EC1F16401AAD002428F1 /* Supporting Files */,
+				868CF7601662D53C00DBD9BC /* ZoznamPredmetov.h */,
+				868CF7641662DFCC00DBD9BC /* Predmet.h */,
+				868CF7651662DFCC00DBD9BC /* Predmet.m */,
+				868CF7611662D53C00DBD9BC /* ZoznamPredmetov.m */,
 			);
 			path = Candle;
 			sourceTree = "<group>";
@@ -307,6 +317,8 @@
 				86D2EC2916401AAD002428F1 /* AppDelegate.m in Sources */,
 				86D2EC3816401AAE002428F1 /* FirstViewController.m in Sources */,
 				86D2EC3F16401AAE002428F1 /* SecondViewController.m in Sources */,
+				868CF7621662D53C00DBD9BC /* ZoznamPredmetov.m in Sources */,
+				868CF7661662DFCC00DBD9BC /* Predmet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
