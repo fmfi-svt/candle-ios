@@ -9,5 +9,20 @@
 #import "Predmet.h"
 
 @implementation Predmet
-@synthesize name, room, day, start, lengthOfLesson;
+@synthesize name, room, day, start, classLength;
+
+-(id)initWithName:(NSNumber*)aPredmetId
+          andName:(NSString*)aName andRoom:(NSString *)aRoom andDay:(NSNumber *)aDay andStart:(NSNumber *)aStart andClassLength:(NSNumber *)aClassLength
+{
+    self = [super init];
+    if(self){
+        self.predmetId = aPredmetId;
+        self.name =	aName;
+        self.room = aRoom;
+        self.day = aDay;
+        self.start = aStart;
+        self.classLength = aClassLength;
+    }
+}
+
 @end

@@ -18,10 +18,10 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="226" translatesAutoresizingMaskIntoConstraints="NO" id="kq3-Aw-Wfy">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="89" translatesAutoresizingMaskIntoConstraints="NO" id="kq3-Aw-Wfy">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="226" id="VTo-ti-BI6"/>
                                     <constraint firstAttribute="height" constant="48" id="YNr-ea-DU5"/>
+                                    <constraint firstAttribute="width" constant="89" id="dUw-qQ-Mkj"/>
                                 </constraints>
                                 <attributedString key="attributedText">
                                     <fragment content="Label">
@@ -47,31 +47,31 @@
                                     <action selector="vypisRozvrh:" destination="2" eventType="touchUpInside" id="S5o-Sb-M5n"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="tab-zx-GPF">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="288" id="fKs-sj-ugn"/>
-                                </constraints>
-                            </tableView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nPj-B0-OlO">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="kq3-Aw-Wfy" firstAttribute="leading" secondItem="16" secondAttribute="leading" constant="38" id="6y6-gM-QSN"/>
-                            <constraint firstItem="tab-zx-GPF" firstAttribute="leading" secondItem="16" secondAttribute="leading" type="default" id="9KA-fv-vLp"/>
-                            <constraint firstItem="20" firstAttribute="top" secondItem="16" secondAttribute="top" constant="145" id="BkC-OM-kw4"/>
+                            <constraint firstAttribute="bottom" secondItem="ciE-CP-7CD" secondAttribute="bottom" constant="183" id="9xm-dc-3Yb"/>
+                            <constraint firstItem="kq3-Aw-Wfy" firstAttribute="top" secondItem="16" secondAttribute="top" constant="96" id="G7t-jD-31u"/>
+                            <constraint firstItem="kq3-Aw-Wfy" firstAttribute="leading" secondItem="16" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Mwt-jB-4EF"/>
+                            <constraint firstAttribute="trailing" secondItem="nPj-B0-OlO" secondAttribute="trailing" constant="25" id="Myy-jC-BpG"/>
                             <constraint firstAttribute="trailing" secondItem="20" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Qxj-1L-2Yh"/>
                             <constraint firstItem="20" firstAttribute="leading" secondItem="16" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Ty9-wx-CyI"/>
-                            <constraint firstItem="ciE-CP-7CD" firstAttribute="top" secondItem="16" secondAttribute="top" constant="20" symbolic="YES" type="default" id="YAO-gd-OYi"/>
-                            <constraint firstItem="ciE-CP-7CD" firstAttribute="centerX" secondItem="20" secondAttribute="centerX" type="default" id="gC5-aE-TgH"/>
-                            <constraint firstItem="kq3-Aw-Wfy" firstAttribute="top" secondItem="ciE-CP-7CD" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="naJ-wV-hN0"/>
-                            <constraint firstItem="tab-zx-GPF" firstAttribute="trailing" secondItem="16" secondAttribute="trailing" type="default" id="oR8-Si-2JS"/>
-                            <constraint firstItem="tab-zx-GPF" firstAttribute="bottom" secondItem="16" secondAttribute="bottom" type="default" id="znp-wQ-asW"/>
+                            <constraint firstAttribute="trailing" secondItem="ciE-CP-7CD" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="a6W-r3-cCW"/>
+                            <constraint firstItem="20" firstAttribute="top" secondItem="16" secondAttribute="top" constant="60" id="weg-l7-gdc"/>
+                            <constraint firstItem="nPj-B0-OlO" firstAttribute="top" secondItem="20" secondAttribute="top" type="default" id="zLc-c9-GVt"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Rozvrh" image="140-gradhat.png" id="7"/>
                     <connections>
+                        <outlet property="UImiestnostPredmetu" destination="kq3-Aw-Wfy" id="Bql-Tq-lMN"/>
+                        <outlet property="UInazovPredmetu" destination="20" id="iYV-aw-4DX"/>
+                        <outlet property="UIzaciatokPredmetu" destination="nPj-B0-OlO" id="hwx-pe-be6"/>
                         <outlet property="rozvrhLabel" destination="kq3-Aw-Wfy" id="pU0-Lb-AAX"/>
-                        <outlet property="tabulkaRozvrh" destination="tab-zx-GPF" id="M4f-EW-H4p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10" sceneMemberID="firstResponder"/>
@@ -145,8 +145,11 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FirstViewController.h"/>
             <relationships>
                 <relationship kind="action" name="backgroundTouchedHideKeyboard:"/>
-                <relationship kind="action" name="degreeConvert:"/>
+                <relationship kind="action" name="vypisPredmet:"/>
                 <relationship kind="action" name="vypisRozvrh:"/>
+                <relationship kind="outlet" name="UImiestnostPredmetu" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="UInazovPredmetu" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="UIzaciatokPredmetu" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="candleNameTextBox" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="rozvrhLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="tabulkaRozvrh" candidateClass="UITableView"/>

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		860F7881169CC062004A8389 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 860F7880169CC062004A8389 /* libsqlite3.0.dylib */; };
+		86571391169CB3230006F066 /* rozvrh.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 86571390169CB3230006F066 /* rozvrh.sqlite */; };
 		86850807164589900049FE39 /* 20-gear2.png in Resources */ = {isa = PBXBuildFile; fileRef = 86850806164589900049FE39 /* 20-gear2.png */; };
 		8685080A16458A150049FE39 /* 140-gradhat.png in Resources */ = {isa = PBXBuildFile; fileRef = 8685080916458A150049FE39 /* 140-gradhat.png */; };
 		868CF7621662D53C00DBD9BC /* ZoznamPredmetov.m in Sources */ = {isa = PBXBuildFile; fileRef = 868CF7611662D53C00DBD9BC /* ZoznamPredmetov.m */; };
@@ -46,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		860F7880169CC062004A8389 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		86571390169CB3230006F066 /* rozvrh.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = rozvrh.sqlite; sourceTree = "<group>"; };
 		86850806164589900049FE39 /* 20-gear2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "20-gear2.png"; path = "../../../../Downloads/glyphish-icons/PNG icons/20-gear2.png"; sourceTree = "<group>"; };
 		8685080916458A150049FE39 /* 140-gradhat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "140-gradhat.png"; path = "../../../../Downloads/glyphish-icons/PNG icons/140-gradhat.png"; sourceTree = "<group>"; };
 		868CF7601662D53C00DBD9BC /* ZoznamPredmetov.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoznamPredmetov.h; sourceTree = "<group>"; };
@@ -88,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				860F7881169CC062004A8389 /* libsqlite3.0.dylib in Frameworks */,
 				86D2EC1916401AAD002428F1 /* UIKit.framework in Frameworks */,
 				86D2EC1B16401AAD002428F1 /* Foundation.framework in Frameworks */,
 				86D2EC1D16401AAD002428F1 /* CoreGraphics.framework in Frameworks */,
@@ -110,6 +115,7 @@
 		86D2EC0916401AAD002428F1 = {
 			isa = PBXGroup;
 			children = (
+				860F7880169CC062004A8389 /* libsqlite3.0.dylib */,
 				86D2EC1E16401AAD002428F1 /* Candle */,
 				86D2EC5016401AAE002428F1 /* CandleTests */,
 				86D2EC1716401AAD002428F1 /* Frameworks */,
@@ -154,9 +160,9 @@
 				86D2EC4216401AAE002428F1 /* second@2x.png */,
 				86D2EC1F16401AAD002428F1 /* Supporting Files */,
 				868CF7601662D53C00DBD9BC /* ZoznamPredmetov.h */,
+				868CF7611662D53C00DBD9BC /* ZoznamPredmetov.m */,
 				868CF7641662DFCC00DBD9BC /* Predmet.h */,
 				868CF7651662DFCC00DBD9BC /* Predmet.m */,
-				868CF7611662D53C00DBD9BC /* ZoznamPredmetov.m */,
 			);
 			path = Candle;
 			sourceTree = "<group>";
@@ -164,6 +170,7 @@
 		86D2EC1F16401AAD002428F1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				86571390169CB3230006F066 /* rozvrh.sqlite */,
 				8685080916458A150049FE39 /* 140-gradhat.png */,
 				86850806164589900049FE39 /* 20-gear2.png */,
 				86D2EC2016401AAD002428F1 /* Candle-Info.plist */,
@@ -279,6 +286,7 @@
 				86D2EC4316401AAE002428F1 /* second@2x.png in Resources */,
 				86850807164589900049FE39 /* 20-gear2.png in Resources */,
 				8685080A16458A150049FE39 /* 140-gradhat.png in Resources */,
+				86571391169CB3230006F066 /* rozvrh.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

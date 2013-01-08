@@ -7,19 +7,41 @@
 //
 
 #import "FirstViewController.h"
+#import "Predmet.h"
+#import "ZoznamPredmetov.h"
+
+
 
 @interface FirstViewController ()
-
 @end
 
+
 @implementation FirstViewController
+
+@synthesize polePredmetov,UInazovPredmetu,UImiestnostPredmetu,UIzaciatokPredmetu;
 @synthesize candleNameTextBox, rozvrhLabel, tabulkaRozvrh;
+
+
 
 - (void)viewDidLoad
 {
+    
+    ZoznamPredmetov * dbPredmetov =[[ZoznamPredmetov alloc] init];
+    self.polePredmetov = [dbPredmetov getLessons];
+    [self.UInazovPredmetu setText:((Predmet *) [self.polePredmetov objectAtIndex:0]).name];
+    [self.UImiestnostPredmetu setText:((Predmet *) [self.polePredmetov objectAtIndex:0]).room];
+  
+    
+    [self.UIzaciatokPredmetu setText:( [((Predmet *) [self.polePredmetov objectAtIndex:0]).start stringValue] )];
+    
+    
+    
+    
+    
+    
     [super viewDidLoad];
     
-	// Do any additional setup after loading the view, typically from a nib.
+	
 }
 
 - (void)didReceiveMemoryWarning
@@ -29,6 +51,19 @@
 }
 
 
+
+-(void)vypisPredmet:(id)sender
+{
+    static NSInteger currentIndex = 0;
+    if (++currentIndex == [self.polePredmetov count]) {
+        currentIndex=0;
+    }else{
+        Predmet *predmet = (Predmet *) [self.polePredmetov objectAtIndex: currentIndex];
+        [self.UInazovPredmetu setText:predmet.name];
+        [self.UImiestnostPredmetu setText:predmet.room];
+        [self.UIzaciatokPredmetu setText:[predmet.start stringValue]];
+}
+}
 
 
 - (void)vypisRozvrh:(id)sender
@@ -63,6 +98,10 @@
     
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    self.polePredmetov =nil;
+    self.UInazovPredmetu = nil;
+    self.UImiestnostPredmetu = nil;
+    self.UIzaciatokPredmetu = nil;
     self.candleNameTextBox = nil;
     self.rozvrhLabel = nil;
 }
