@@ -10,29 +10,22 @@
 
 @interface FirstViewController : UIViewController {
     NSMutableArray *polePredmetov;
-    
-    UITextField *tempTextBox;
-    UILabel     *rozvrhLabel;
-    UITableView *tabulkaRozvrh;
+    UILabel     *UILabelDen;
+    UITableView *UItabulkaRozvrh;
 }
 
 
 @property(nonatomic,retain) NSMutableArray *polePredmetov;
 
-@property (weak, nonatomic) IBOutlet UILabel *UInazovPredmetu;
-@property (weak, nonatomic) IBOutlet UILabel *UImiestnostPredmetu;
-@property (weak, nonatomic) IBOutlet UILabel *UIzaciatokPredmetu;
+@property (nonatomic, retain) IBOutlet UILabel *UILabelDen;
+@property (nonatomic, retain) IBOutlet UITableView *UItabulkaRozvrh;
 
 - (IBAction)vypisPredmet:(id)sender;
-
-
-
-@property (nonatomic, retain) IBOutlet UILabel *rozvrhLabel;
-@property (nonatomic, retain) IBOutlet UITextField *candleNameTextBox;
-@property (nonatomic, retain) IBOutlet UITableView *tabulkaRozvrh;
-
-
+- (int) denVTyzdni:(id)sender;
 - (IBAction)vypisRozvrh:(id)sender;
+
+
+
 - (IBAction)backgroundTouchedHideKeyboard:(id)sender;
 @end
 

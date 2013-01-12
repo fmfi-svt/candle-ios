@@ -33,7 +33,6 @@
         andRoom:(NSNumber*)aRoom
         andDay:(NSNumber*)aDay
         andStart:(NSNumber*)aStart
-        andRoom:(NSNumber*)aRoom
         andClassLength:(NSNumber*)aClassLength;
 
 

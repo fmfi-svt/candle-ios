@@ -17,10 +17,10 @@
 
 - (NSMutableArray *) getLessons;
 
--(IBAction)setLessons:(id)sender;
--(IBAction)addLesson:(NSString *)newLesson;
+//-(IBAction)setLessons:(id)sender;
+//-(IBAction)addLesson:(NSString *)newLesson;
 
--(IBAction)vypisPredmety:(UILabel *)rozvrhLabel;
+//-(IBAction)vypisPredmety:(UILabel *)rozvrhLabel;
 
--(IBAction)vypisPredmetyNaDen:first:(UILabel*)rozvrhLabel second:(NSNumber*)den;
+//-(IBAction)vypisPredmetyNaDen:first:(UILabel*)rozvrhLabel second:(NSNumber*)den;
 @end

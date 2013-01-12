@@ -9,7 +9,13 @@
 #import "Predmet.h"
 
 @implementation Predmet
-@synthesize name, room, day, start, classLength;
+
+@synthesize predmetId;
+@synthesize name;
+@synthesize room;
+@synthesize day;
+@synthesize start;
+@synthesize classLength;
 
 -(id)initWithName:(NSNumber*)aPredmetId
           andName:(NSString*)aName andRoom:(NSString *)aRoom andDay:(NSNumber *)aDay andStart:(NSNumber *)aStart andClassLength:(NSNumber *)aClassLength
@@ -22,7 +28,13 @@
         self.day = aDay;
         self.start = aStart;
         self.classLength = aClassLength;
+        
     }
+    return self;
 }
+
+
+
+
 
 @end
