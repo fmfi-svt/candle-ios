@@ -29,7 +29,7 @@
 {
     
     ZoznamPredmetov * dbPredmetov =[[ZoznamPredmetov alloc] init];
-    self.polePredmetov = [dbPredmetov getLessons];
+    self.polePredmetov = [dbPredmetov getLessonsFromDB];
 //    [self.UInazovPredmetu setText:((Predmet *) [self.polePredmetov objectAtIndex:0]).name];
 //    [self.UImiestnostPredmetu setText:((Predmet *) [self.polePredmetov objectAtIndex:0]).room];
 //    [self.UIzaciatokPredmetu setText:( [((Predmet *) [self.polePredmetov objectAtIndex:0]).start stringValue] )];

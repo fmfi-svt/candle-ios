@@ -11,11 +11,16 @@
 
 @interface ZoznamPredmetov : NSObject {
     sqlite3 *db;
+    NSString *username;
   //  NSMutableArray *predmety;
 }
 
+@property(readwrite,retain) NSString *username;
 
-- (NSMutableArray *) getLessons;
+
+- (NSMutableArray *) getLessonsFromDB;
+- (NSMutableArray *) getDataFromCSV;
+- (IBAction) setLocalDB:(NSArray *)poleNaInsert;
 
 //-(IBAction)setLessons:(id)sender;
 //-(IBAction)addLesson:(NSString *)newLesson;
