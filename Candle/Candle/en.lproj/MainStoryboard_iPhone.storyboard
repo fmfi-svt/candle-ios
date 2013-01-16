@@ -78,11 +78,7 @@
                     <tabBarItem key="tabBarItem" title="Rozvrh" image="140-gradhat.png" id="7"/>
                     <connections>
                         <outlet property="UILabelDen" destination="20" id="Jnm-fI-vnb"/>
-                        <outlet property="UImiestnostPredmetu" destination="kq3-Aw-Wfy" id="Bql-Tq-lMN"/>
-                        <outlet property="UInazovPredmetu" destination="20" id="iYV-aw-4DX"/>
                         <outlet property="UItabulkaRozvrh" destination="k7y-mF-Fue" id="Ynb-nK-3aR"/>
-                        <outlet property="UIzaciatokPredmetu" destination="nPj-B0-OlO" id="hwx-pe-be6"/>
-                        <outlet property="rozvrhLabel" destination="kq3-Aw-Wfy" id="pU0-Lb-AAX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10" sceneMemberID="firstResponder"/>
