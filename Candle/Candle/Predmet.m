@@ -26,8 +26,7 @@
     return self;
 }
 
-
-
-
-
+- (NSString *)description {
+    return [NSString stringWithFormat: @"predmetId : %@ \r name : %@ \r room : %@ \r day: %@ \r start : %@ \r classLength : %@", self.predmetId, self.name, self.room, self.day, self.start, self.classLength];
+}
 @end

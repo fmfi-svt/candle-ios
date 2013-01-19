@@ -30,5 +30,5 @@
         andClassLength:(NSNumber*)aClassLength;
 
 
-
+- (NSString *)description;
 @end
