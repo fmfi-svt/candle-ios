@@ -9,12 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface Predmet : NSObject{
-    NSNumber *predmetId;
-    NSString *name;
-    NSString *room;
-    NSNumber *day;
-    NSNumber *start;
-    NSNumber *classLength;
 }
 @property(readwrite, retain) NSNumber *predmetId;
 @property(readwrite, retain) NSString *name;

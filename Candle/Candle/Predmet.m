@@ -10,24 +10,17 @@
 
 @implementation Predmet
 
-@synthesize predmetId;
-@synthesize name;
-@synthesize room;
-@synthesize day;
-@synthesize start;
-@synthesize classLength;
-
 -(id)initWithName:(NSNumber*)aPredmetId
           andName:(NSString*)aName andRoom:(NSString *)aRoom andDay:(NSNumber *)aDay andStart:(NSNumber *)aStart andClassLength:(NSNumber *)aClassLength
 {
     self = [super init];
     if(self){
-        self.predmetId = aPredmetId;
-        self.name =	aName;
-        self.room = aRoom;
-        self.day = aDay;
-        self.start = aStart;
-        self.classLength = aClassLength;
+        _predmetId = aPredmetId;
+        _name =	aName;
+        _room = aRoom;
+        _day = aDay;
+        _start = aStart;
+        _classLength = aClassLength;
         
     }
     return self;

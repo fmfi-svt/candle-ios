@@ -13,7 +13,6 @@
 
 
 @implementation ZoznamPredmetov
-@synthesize username;
 
 -(NSMutableArray *) getDataFromCSV{
     self.username = @"sulo";
@@ -48,46 +47,47 @@
               }
     
     NSArray *poleItemov = [dataStr componentsSeparatedByString: @","];
- //    DLog(@"%d",[poleItemov count]);
+//    DLog(@"%@",poleItemov);
     
-    int i=1;
+    int i=0;
     NSMutableArray *pole = [[NSMutableArray alloc] init];
     
     for (NSString *item in poleItemov) {
-        
-        if (i>9) {
-            Predmet *predm;
+        if (i>8) {
+            Predmet *predm = [[Predmet alloc] init];
             int cislo = 1;
-            
-        switch (i % 9) {
-            case 7:
-                 predm.name = [poleItemov objectAtIndex:i];
-                 [pole addObject:predm];
-             //   DLog(@"%@ ", predm.name);
-                break;
-            case 5:
-                predm.room = [poleItemov objectAtIndex:i];
-                break;
-            case 1:
-                                        // ?????preco mi nepinda, ze potrebuje zkonvertovat z NSSTRING do NSNumber?
-                predm.day = [poleItemov objectAtIndex:i];
-                break;
-            case 2:
-                predm.start = [poleItemov objectAtIndex:i];
-                break;
-            case 4:
-
-                cislo = (int)[[poleItemov objectAtIndex:i] characterAtIndex:0]-48;
-                predm.classLength = [NSNumber numberWithInt:cislo];
-               
-                break;            
-            default:
-                break;
+            int zostatok = i % 9;
+            DLog(@"zostatok: %d", zostatok);
+            switch (zostatok) {
+                case 7:
+                    predm.name = [poleItemov objectAtIndex:i];
+                    DLog(@"Predmet name: %@", predm.name);
+                    [pole addObject:predm];
+                    //   DLog(@"%@ ", predm.name);
+                    break;
+                case 5:
+                    predm.room = [poleItemov objectAtIndex:i];
+                    break;
+                case 1:
+                    // ?????preco mi nepinda, ze potrebuje zkonvertovat z NSSTRING do NSNumber?
+                    predm.day = [poleItemov objectAtIndex:i];
+                    break;
+                case 2:
+                    predm.start = [poleItemov objectAtIndex:i];
+                    break;
+                case 4:
+                    
+                    cislo = (int)[[poleItemov objectAtIndex:i] characterAtIndex:0]-48;
+                    predm.classLength = [NSNumber numberWithInt:cislo];
+                    
+                    break;
+                default:
+                    break;
+            }
         }
         i++;
-        	
     }
-    }
+    DLog(@"POLE %@",pole);
     
     return pole;
 }

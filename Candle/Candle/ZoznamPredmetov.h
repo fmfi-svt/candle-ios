@@ -11,7 +11,6 @@
 
 @interface ZoznamPredmetov : NSObject {
     sqlite3 *db;
-    NSString *username;
   //  NSMutableArray *predmety;
 }
 
