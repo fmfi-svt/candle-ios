@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		860F7881169CC062004A8389 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 860F7880169CC062004A8389 /* libsqlite3.0.dylib */; };
+		861F634016AAFFDC00AB185A /* NSString+ParsingExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 861F633F16AAFFDC00AB185A /* NSString+ParsingExtensions.m */; };
 		86571391169CB3230006F066 /* rozvrh.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 86571390169CB3230006F066 /* rozvrh.sqlite */; };
 		868CF7621662D53C00DBD9BC /* ZoznamPredmetov.m in Sources */ = {isa = PBXBuildFile; fileRef = 868CF7611662D53C00DBD9BC /* ZoznamPredmetov.m */; };
 		868CF7661662DFCC00DBD9BC /* Predmet.m in Sources */ = {isa = PBXBuildFile; fileRef = 868CF7651662DFCC00DBD9BC /* Predmet.m */; };
@@ -49,6 +50,8 @@
 
 /* Begin PBXFileReference section */
 		860F7880169CC062004A8389 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		861F633E16AAFFDC00AB185A /* NSString+ParsingExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ParsingExtensions.h"; sourceTree = "<group>"; };
+		861F633F16AAFFDC00AB185A /* NSString+ParsingExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ParsingExtensions.m"; sourceTree = "<group>"; };
 		86571390169CB3230006F066 /* rozvrh.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = rozvrh.sqlite; sourceTree = "<group>"; };
 		868CF7601662D53C00DBD9BC /* ZoznamPredmetov.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoznamPredmetov.h; sourceTree = "<group>"; };
 		868CF7611662D53C00DBD9BC /* ZoznamPredmetov.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ZoznamPredmetov.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -161,6 +164,8 @@
 				86D2EC1F16401AAD002428F1 /* Supporting Files */,
 				868CF7601662D53C00DBD9BC /* ZoznamPredmetov.h */,
 				868CF7611662D53C00DBD9BC /* ZoznamPredmetov.m */,
+				861F633E16AAFFDC00AB185A /* NSString+ParsingExtensions.h */,
+				861F633F16AAFFDC00AB185A /* NSString+ParsingExtensions.m */,
 				868CF7641662DFCC00DBD9BC /* Predmet.h */,
 				868CF7651662DFCC00DBD9BC /* Predmet.m */,
 			);
@@ -327,6 +332,7 @@
 				86D2EC3F16401AAE002428F1 /* OptionsViewController.m in Sources */,
 				868CF7621662D53C00DBD9BC /* ZoznamPredmetov.m in Sources */,
 				868CF7661662DFCC00DBD9BC /* Predmet.m in Sources */,
+				861F634016AAFFDC00AB185A /* NSString+ParsingExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

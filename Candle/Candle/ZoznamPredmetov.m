@@ -22,9 +22,7 @@
     
     NSURL  *url = [NSURL URLWithString:stringURL];
     NSData *urlData = [NSData dataWithContentsOfURL:url];
-    NSString *string = [NSString stringWithUTF8String:[urlData bytes]];
-    //DLog(@"%@",string);
-    NSArray       *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString  *documentsDirectory = [paths objectAtIndex:0];
     
     NSString  *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,@"candle.csv"];
@@ -46,8 +44,10 @@
         DLog(@"%@",[error localizedDescription]);
               }
     
-    NSArray *poleItemov = [dataStr componentsSeparatedByString: @","];
-//    DLog(@"%@",poleItemov);
+    NSArray *poleItemov = [dataStr csvRows];
+   // [dataStr componentsSeparatedByString: @","];
+    DLog(@"%@",poleItemov);
+   
     
     int i=0;
     NSMutableArray *pole = [[NSMutableArray alloc] init];
@@ -57,7 +57,7 @@
             Predmet *predm = [[Predmet alloc] init];
             int cislo = 1;
             int zostatok = i % 8;
-//            DLog(@"zostatok: %d", zostatok);
+            DLog(@"zostatok: %d %@", zostatok, item);
             switch (zostatok) {
                 case 6:
                     predm.name = [poleItemov objectAtIndex:i];
@@ -218,6 +218,10 @@
     rozvrhLabel.text = tempPredmety;
 }
 */
+
+
+
+
 
 
 

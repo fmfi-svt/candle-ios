@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
-
+#import "NSString+ParsingExtensions.h"
 @interface ZoznamPredmetov : NSObject {
     sqlite3 *db;
   //  NSMutableArray *predmety;
