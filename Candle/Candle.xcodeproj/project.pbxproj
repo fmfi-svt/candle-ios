@@ -51,7 +51,7 @@
 		860F7880169CC062004A8389 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		86571390169CB3230006F066 /* rozvrh.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = rozvrh.sqlite; sourceTree = "<group>"; };
 		868CF7601662D53C00DBD9BC /* ZoznamPredmetov.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoznamPredmetov.h; sourceTree = "<group>"; };
-		868CF7611662D53C00DBD9BC /* ZoznamPredmetov.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoznamPredmetov.m; sourceTree = "<group>"; };
+		868CF7611662D53C00DBD9BC /* ZoznamPredmetov.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ZoznamPredmetov.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		868CF7641662DFCC00DBD9BC /* Predmet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Predmet.h; sourceTree = "<group>"; };
 		868CF7651662DFCC00DBD9BC /* Predmet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Predmet.m; sourceTree = "<group>"; };
 		869D6A0516A721A9004553CB /* 20-gear2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "20-gear2.png"; sourceTree = "<group>"; };
@@ -63,7 +63,7 @@
 		86D2EC2016401AAD002428F1 /* Candle-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Candle-Info.plist"; sourceTree = "<group>"; };
 		86D2EC2216401AAD002428F1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		86D2EC2416401AAD002428F1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		86D2EC2616401AAD002428F1 /* Candle-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Candle-Prefix.pch"; sourceTree = "<group>"; };
+		86D2EC2616401AAD002428F1 /* Candle-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "Candle-Prefix.pch"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		86D2EC2716401AAD002428F1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		86D2EC2816401AAD002428F1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		86D2EC2A16401AAD002428F1 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -72,7 +72,7 @@
 		86D2EC3116401AAE002428F1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		86D2EC3416401AAE002428F1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		86D2EC3616401AAE002428F1 /* DayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DayViewController.h; sourceTree = "<group>"; };
-		86D2EC3716401AAE002428F1 /* DayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DayViewController.m; sourceTree = "<group>"; };
+		86D2EC3716401AAE002428F1 /* DayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DayViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		86D2EC3916401AAE002428F1 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		86D2EC3B16401AAE002428F1 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
 		86D2EC3D16401AAE002428F1 /* OptionsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OptionsViewController.h; sourceTree = "<group>"; };

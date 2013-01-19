@@ -23,14 +23,15 @@
     
     NSURL  *url = [NSURL URLWithString:stringURL];
     NSData *urlData = [NSData dataWithContentsOfURL:url];
-//    NSString *string = [NSString stringWithUTF8String:[urlData bytes]];
-//    NSLog(@"%@",string);
+    NSString *string = [NSString stringWithUTF8String:[urlData bytes]];
+    //DLog(@"%@",string);
+    NSArray       *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString  *documentsDirectory = [paths objectAtIndex:0];
+    
+    NSString  *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,@"candle.csv"];
     if ( urlData )
     {
-        NSArray       *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString  *documentsDirectory = [paths objectAtIndex:0];
-        
-        NSString  *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,@"candle.csv"];
+
         [urlData writeToFile:filePath atomically:YES];
     }
     
@@ -39,15 +40,15 @@
       NSError *error;
     //filePath @"candle.csv"
     
-    NSString *dataStr = [NSString stringWithContentsOfFile:@"candle.csv" encoding:NSUTF8StringEncoding error:&error];
+    NSString *dataStr = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
     if (dataStr) {
-        NSLog(@"%@", dataStr);
+        //DLog(@"%@", dataStr);
     } else {
-        NSLog(@"%@",[error localizedDescription]);
+        DLog(@"%@",[error localizedDescription]);
               }
     
     NSArray *poleItemov = [dataStr componentsSeparatedByString: @","];
- //    NSLog(@"%d",[poleItemov count]);
+ //    DLog(@"%d",[poleItemov count]);
     
     int i=1;
     NSMutableArray *pole = [[NSMutableArray alloc] init];
@@ -62,7 +63,7 @@
             case 7:
                  predm.name = [poleItemov objectAtIndex:i];
                  [pole addObject:predm];
-             //   NSLog(@"%@ ", predm.name);
+             //   DLog(@"%@ ", predm.name);
                 break;
             case 5:
                 predm.room = [poleItemov objectAtIndex:i];
@@ -111,7 +112,7 @@
 
         // Execute the insert
         if (sqlite3_step(insert_statement) != SQLITE_DONE) {
-            NSLog(@"Insert failed: %s", sqlite3_errmsg(db));
+            DLog(@"Insert failed: %s", sqlite3_errmsg(db));
         }
         
         // Reset the statement
@@ -136,17 +137,17 @@
         BOOL success = [fileMgr fileExistsAtPath:dbPath];
         if(!success)
         {
-            NSLog(@"Cannot locate database file '%@'.", dbPath);
+            DLog(@"Cannot locate database file '%@'.", dbPath);
         }
         if(!(sqlite3_open([dbPath UTF8String], &db) == SQLITE_OK))
         {
-            NSLog(@"An error has occured.");
+            DLog(@"An error has occured.");
         }
         const char *sql = "SELECT id, name, room, day, start, length FROM  rozvrh";
         sqlite3_stmt *sqlStatement;
         if(sqlite3_prepare(db, sql, -1, &sqlStatement, NULL) != SQLITE_OK)
         {
-            NSLog(@"Problem with prepare statement");
+            DLog(@"Problem with prepare statement");
         }
         
         //
@@ -164,7 +165,7 @@
         }
     }
     @catch (NSException *exception) {
-        NSLog(@"An exception occured: %@", [exception reason]);
+        DLog(@"An exception occured: %@", [exception reason]);
     }
     @finally {
         return Zoznam;

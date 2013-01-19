@@ -35,8 +35,8 @@
 //    [self.UInazovPredmetu setText:((Predmet *) [self.polePredmetov objectAtIndex:0]).name];
 //    [self.UImiestnostPredmetu setText:((Predmet *) [self.polePredmetov objectAtIndex:0]).room];
 //    [self.UIzaciatokPredmetu setText:( [((Predmet *) [self.polePredmetov objectAtIndex:0]).start stringValue] )];
-    NSLog(@"akoze nieco sa mohlo nacitat");
-    NSLog(@"Array Count: %d",[[dbPredmetov getDataFromCSV] count]);
+    DLog(@"akoze nieco sa mohlo nacitat");
+    DLog(@"Array Count: %d",[[dbPredmetov getDataFromCSV] count]);
     [super viewDidLoad];
     
 	
@@ -122,7 +122,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"aspon nieco?");
+    DLog(@"aspon nieco?");
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
    
@@ -136,7 +136,7 @@
     // Set up the cell...
     Predmet *predm = [polePredmetov objectAtIndex:indexPath.row];
     cell.textLabel.text = predm.name;    
-    NSLog(@"Cell is %@", predm.name);
+    DLog(@"Cell is %@", predm.name);
     return cell;
 
      }
