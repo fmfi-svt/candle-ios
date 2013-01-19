@@ -6,17 +6,17 @@
 //  Copyright (c) 2012 Peter Sulik. All rights reserved.
 //
 
-#import "FirstViewController.h"
+#import "DayViewController.h"
 #import "Predmet.h"
 #import "ZoznamPredmetov.h"
 
 
 
-@interface FirstViewController ()
+@interface DayViewController ()
 @end
 
 
-@implementation FirstViewController
+@implementation DayViewController
 
 @synthesize polePredmetov;
 //UInazovPredmetu,UImiestnostPredmetu,UIzaciatokPredmetu,
@@ -29,12 +29,14 @@
 {
     
     ZoznamPredmetov * dbPredmetov =[[ZoznamPredmetov alloc] init];
+    [dbPredmetov setLocalDB:([dbPredmetov getDataFromCSV])];
+    
     self.polePredmetov = [dbPredmetov getLessonsFromDB];
 //    [self.UInazovPredmetu setText:((Predmet *) [self.polePredmetov objectAtIndex:0]).name];
 //    [self.UImiestnostPredmetu setText:((Predmet *) [self.polePredmetov objectAtIndex:0]).room];
 //    [self.UIzaciatokPredmetu setText:( [((Predmet *) [self.polePredmetov objectAtIndex:0]).start stringValue] )];
-    
-    
+    NSLog(@"akoze nieco sa mohlo nacitat");
+    NSLog(@"Array Count: %d",[[dbPredmetov getDataFromCSV] count]);
     [super viewDidLoad];
     
 	
@@ -76,22 +78,27 @@
 
 
 - (void)vypisRozvrh:(id)sender
-{
+{   
+    
+    [UItabulkaRozvrh reloadData];
+    
+    
+    
  //   NSArray * predmety = [NSArray arrayWithObjects: @"telesna", @"matematika", @"pocitace", nil];
   //  NSMutableArray *array = [NSMutableArray arrayWithObjects: @"one", @"two", @"three", @"four", nil];
+  
+  //   NSString *tempPredmet;
     
-//     NSString *tempPredmet;
-    
-//    for (NSString * str in predmety) {
-//        tempPredmet = [NSString stringWithFormat:@"%@, %@", tempPredmety, str];
-      //  tempPredmety = [tempPredmety stringByAppendingString:str];
-//    }
+    for (NSString * str in self.polePredmetov) {
+       // tempPredmet = [NSString stringWithFormat:@"%@, %@", self.polePredmetov, str];
+       // tempPredmety = [tempPredmety stringByAppendingString:str];
+    }
 //    rozvrhLabel.text = tempPredmet;
-    
     static NSInteger currentIndex = 0;
     if (++currentIndex == [self.polePredmetov count]) {
         currentIndex=0;
     }else{
+        //[UItabulkaRozvrh cellForRowAtIndexPath:];
   //      Predmet *predmet = (Predmet *) [self.polePredmetov objectAtIndex: currentIndex];
  //       [self.UInazovPredmetu setText:predmet.name];
  //       [self.UImiestnostPredmetu setText:predmet.room];
@@ -115,21 +122,22 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    NSLog(@"aspon nieco?");
     static NSString *CellIdentifier = @"Cell";
-    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {        
+   
+    
+    if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                       reuseIdentifier:CellIdentifier] ;
+                                       reuseIdentifier:CellIdentifier];
         
     }
     
     // Set up the cell...
     Predmet *predm = [polePredmetov objectAtIndex:indexPath.row];
-    cell.textLabel.text = predm.name;
-    
-    return cell;		
+    cell.textLabel.text = predm.name;    
+    NSLog(@"Cell is %@", predm.name);
+    return cell;
 
      }
      

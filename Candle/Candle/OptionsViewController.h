@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZoznamPredmetov.h"
 
-@interface SecondViewController : UIViewController
+
+@interface OptionsViewController : UIViewController
 
 @end

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstViewController : UIViewController {
+@interface DayViewController : UIViewController {
     NSMutableArray *polePredmetov;
     UILabel     *UILabelDen;
     UITableView *UItabulkaRozvrh;

@@ -23,6 +23,8 @@
     
     NSURL  *url = [NSURL URLWithString:stringURL];
     NSData *urlData = [NSData dataWithContentsOfURL:url];
+//    NSString *string = [NSString stringWithUTF8String:[urlData bytes]];
+//    NSLog(@"%@",string);
     if ( urlData )
     {
         NSArray       *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -34,16 +36,24 @@
     
     
     //jednoduchy parser
+      NSError *error;
+    //filePath @"candle.csv"
     
-    NSString *dataStr = [NSString stringWithContentsOfFile:@"candle.csv" encoding:NSUTF8StringEncoding error:nil];
+    NSString *dataStr = [NSString stringWithContentsOfFile:@"candle.csv" encoding:NSUTF8StringEncoding error:&error];
+    if (dataStr) {
+        NSLog(@"%@", dataStr);
+    } else {
+        NSLog(@"%@",[error localizedDescription]);
+              }
     
     NSArray *poleItemov = [dataStr componentsSeparatedByString: @","];
-    
+ //    NSLog(@"%d",[poleItemov count]);
     
     int i=1;
     NSMutableArray *pole = [[NSMutableArray alloc] init];
     
     for (NSString *item in poleItemov) {
+        
         if (i>9) {
             Predmet *predm;
             int cislo = 1;
@@ -52,6 +62,7 @@
             case 7:
                  predm.name = [poleItemov objectAtIndex:i];
                  [pole addObject:predm];
+             //   NSLog(@"%@ ", predm.name);
                 break;
             case 5:
                 predm.room = [poleItemov objectAtIndex:i];
@@ -161,6 +172,14 @@
     
     
 }
+
+
+
+- (IBAction) nastavUsername:(UITextField *)UIUserNameTextField;
+{
+    self.username = UIUserNameTextField.text;
+}
+
 
 /*
 

@@ -6,13 +6,13 @@
 //  Copyright (c) 2012 Peter Sulik. All rights reserved.
 //
 
-#import "SecondViewController.h"
+#import "OptionsViewController.h"
 
-@interface SecondViewController ()
+@interface OptionsViewController ()
 
 @end
 
-@implementation SecondViewController
+@implementation OptionsViewController
 
 - (void)viewDidLoad
 {

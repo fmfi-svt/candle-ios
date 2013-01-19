@@ -24,10 +24,10 @@
 		86D2EC2F16401AAE002428F1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 86D2EC2E16401AAE002428F1 /* Default-568h@2x.png */; };
 		86D2EC3216401AAE002428F1 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86D2EC3016401AAE002428F1 /* MainStoryboard_iPhone.storyboard */; };
 		86D2EC3516401AAE002428F1 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86D2EC3316401AAE002428F1 /* MainStoryboard_iPad.storyboard */; };
-		86D2EC3816401AAE002428F1 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86D2EC3716401AAE002428F1 /* FirstViewController.m */; };
+		86D2EC3816401AAE002428F1 /* DayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86D2EC3716401AAE002428F1 /* DayViewController.m */; };
 		86D2EC3A16401AAE002428F1 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 86D2EC3916401AAE002428F1 /* first.png */; };
 		86D2EC3C16401AAE002428F1 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 86D2EC3B16401AAE002428F1 /* first@2x.png */; };
-		86D2EC3F16401AAE002428F1 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86D2EC3E16401AAE002428F1 /* SecondViewController.m */; };
+		86D2EC3F16401AAE002428F1 /* OptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86D2EC3E16401AAE002428F1 /* OptionsViewController.m */; };
 		86D2EC4116401AAE002428F1 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 86D2EC4016401AAE002428F1 /* second.png */; };
 		86D2EC4316401AAE002428F1 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 86D2EC4216401AAE002428F1 /* second@2x.png */; };
 		86D2EC4B16401AAE002428F1 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86D2EC4A16401AAE002428F1 /* SenTestingKit.framework */; };
@@ -71,12 +71,12 @@
 		86D2EC2E16401AAE002428F1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		86D2EC3116401AAE002428F1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		86D2EC3416401AAE002428F1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		86D2EC3616401AAE002428F1 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		86D2EC3716401AAE002428F1 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		86D2EC3616401AAE002428F1 /* DayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DayViewController.h; sourceTree = "<group>"; };
+		86D2EC3716401AAE002428F1 /* DayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DayViewController.m; sourceTree = "<group>"; };
 		86D2EC3916401AAE002428F1 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		86D2EC3B16401AAE002428F1 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		86D2EC3D16401AAE002428F1 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		86D2EC3E16401AAE002428F1 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		86D2EC3D16401AAE002428F1 /* OptionsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OptionsViewController.h; sourceTree = "<group>"; };
+		86D2EC3E16401AAE002428F1 /* OptionsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OptionsViewController.m; sourceTree = "<group>"; };
 		86D2EC4016401AAE002428F1 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		86D2EC4216401AAE002428F1 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 		86D2EC4916401AAE002428F1 /* CandleTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CandleTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,12 +150,12 @@
 				86D2EC2816401AAD002428F1 /* AppDelegate.m */,
 				86D2EC3016401AAE002428F1 /* MainStoryboard_iPhone.storyboard */,
 				86D2EC3316401AAE002428F1 /* MainStoryboard_iPad.storyboard */,
-				86D2EC3616401AAE002428F1 /* FirstViewController.h */,
-				86D2EC3716401AAE002428F1 /* FirstViewController.m */,
+				86D2EC3616401AAE002428F1 /* DayViewController.h */,
+				86D2EC3716401AAE002428F1 /* DayViewController.m */,
 				86D2EC3916401AAE002428F1 /* first.png */,
 				86D2EC3B16401AAE002428F1 /* first@2x.png */,
-				86D2EC3D16401AAE002428F1 /* SecondViewController.h */,
-				86D2EC3E16401AAE002428F1 /* SecondViewController.m */,
+				86D2EC3D16401AAE002428F1 /* OptionsViewController.h */,
+				86D2EC3E16401AAE002428F1 /* OptionsViewController.m */,
 				86D2EC4016401AAE002428F1 /* second.png */,
 				86D2EC4216401AAE002428F1 /* second@2x.png */,
 				86D2EC1F16401AAD002428F1 /* Supporting Files */,
@@ -323,8 +323,8 @@
 			files = (
 				86D2EC2516401AAD002428F1 /* main.m in Sources */,
 				86D2EC2916401AAD002428F1 /* AppDelegate.m in Sources */,
-				86D2EC3816401AAE002428F1 /* FirstViewController.m in Sources */,
-				86D2EC3F16401AAE002428F1 /* SecondViewController.m in Sources */,
+				86D2EC3816401AAE002428F1 /* DayViewController.m in Sources */,
+				86D2EC3F16401AAE002428F1 /* OptionsViewController.m in Sources */,
 				868CF7621662D53C00DBD9BC /* ZoznamPredmetov.m in Sources */,
 				868CF7661662DFCC00DBD9BC /* Predmet.m in Sources */,
 			);
