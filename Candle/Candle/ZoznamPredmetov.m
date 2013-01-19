@@ -57,11 +57,11 @@
             Predmet *predm = [[Predmet alloc] init];
             int cislo = 1;
             int zostatok = i % 9;
-            DLog(@"zostatok: %d", zostatok);
+//            DLog(@"zostatok: %d", zostatok);
             switch (zostatok) {
                 case 7:
                     predm.name = [poleItemov objectAtIndex:i];
-                    DLog(@"Predmet name: %@", predm.name);
+//                    DLog(@"Predmet name: %@", predm.name);
                     [pole addObject:predm];
                     //   DLog(@"%@ ", predm.name);
                     break;
@@ -87,7 +87,7 @@
         }
         i++;
     }
-    DLog(@"POLE %@",pole);
+//    DLog(@"POLE %@",pole);
     
     return pole;
 }

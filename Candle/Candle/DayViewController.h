@@ -8,15 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DayViewController : UIViewController {
-    NSMutableArray *polePredmetov;
-    UILabel     *UILabelDen;
-    UITableView *UItabulkaRozvrh;
+@interface DayViewController : UIViewController<UITableViewDelegate , UITableViewDataSource>
+ {
+
 }
 
 
 @property(nonatomic,retain) NSMutableArray *polePredmetov;
-
 @property (nonatomic, retain) IBOutlet UILabel *UILabelDen;
 @property (nonatomic, retain) IBOutlet UITableView *UItabulkaRozvrh;
 

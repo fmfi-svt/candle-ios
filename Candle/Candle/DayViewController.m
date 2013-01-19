@@ -18,25 +18,16 @@
 
 @implementation DayViewController
 
-@synthesize polePredmetov;
-//UInazovPredmetu,UImiestnostPredmetu,UIzaciatokPredmetu,
-@synthesize UItabulkaRozvrh;
-@synthesize UILabelDen;
-
-
-
 - (void)viewDidLoad
 {
     
     ZoznamPredmetov * dbPredmetov =[[ZoznamPredmetov alloc] init];
-    [dbPredmetov setLocalDB:([dbPredmetov getDataFromCSV])];
-    
-    self.polePredmetov = [dbPredmetov getLessonsFromDB];
+    self.polePredmetov = [dbPredmetov getDataFromCSV];
 //    [self.UInazovPredmetu setText:((Predmet *) [self.polePredmetov objectAtIndex:0]).name];
 //    [self.UImiestnostPredmetu setText:((Predmet *) [self.polePredmetov objectAtIndex:0]).room];
 //    [self.UIzaciatokPredmetu setText:( [((Predmet *) [self.polePredmetov objectAtIndex:0]).start stringValue] )];
     DLog(@"akoze nieco sa mohlo nacitat");
-    DLog(@"Array Count: %d",[[dbPredmetov getDataFromCSV] count]);
+    DLog(@"Array Count: %d",[self.polePredmetov count]);
     [super viewDidLoad];
     
 	
@@ -80,10 +71,6 @@
 - (void)vypisRozvrh:(id)sender
 {   
     
-    [UItabulkaRozvrh reloadData];
-    
-    
-    
  //   NSArray * predmety = [NSArray arrayWithObjects: @"telesna", @"matematika", @"pocitace", nil];
   //  NSMutableArray *array = [NSMutableArray arrayWithObjects: @"one", @"two", @"three", @"four", nil];
   
@@ -116,7 +103,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [polePredmetov count];
+    return [self.polePredmetov count];
 }
 
 
@@ -134,21 +121,21 @@
     }
     
     // Set up the cell...
-    Predmet *predm = [polePredmetov objectAtIndex:indexPath.row];
+    Predmet *predm = [self.polePredmetov objectAtIndex:indexPath.row];
     cell.textLabel.text = predm.name;    
     DLog(@"Cell is %@", predm.name);
     return cell;
 
      }
      
--(IBAction)addLesson:(id)sender
-{
-    [UItabulkaRozvrh beginUpdates];
-    [polePredmetov addObject:@"Lesson"];
-    //NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:[polePredmetov count]-1 inSection:1]];
-    [[self UItabulkaRozvrh] insertRowsAtIndexPaths:polePredmetov withRowAnimation:UITableViewRowAnimationTop];
-    [UItabulkaRozvrh endUpdates];
-}
+//-(IBAction)addLesson:(id)sender
+//{
+//    [UItabulkaRozvrh beginUpdates];
+//    [polePredmetov addObject:@"Lesson"];
+//    //NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:[polePredmetov count]-1 inSection:1]];
+//    [[self UItabulkaRozvrh] insertRowsAtIndexPaths:polePredmetov withRowAnimation:UITableViewRowAnimationTop];
+//    [UItabulkaRozvrh endUpdates];
+//}
 
 
 - (void)backgroundTouchedHideKeyboard:(id)sender
@@ -174,7 +161,11 @@
     [super viewDidUnload];
 }
 
+#pragma mark - Table view delegate
 
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"Row pressed!!");
+}
 
 @end
