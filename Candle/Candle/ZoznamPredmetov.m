@@ -56,26 +56,26 @@
         if (i>8) {
             Predmet *predm = [[Predmet alloc] init];
             int cislo = 1;
-            int zostatok = i % 9;
+            int zostatok = i % 8;
 //            DLog(@"zostatok: %d", zostatok);
             switch (zostatok) {
-                case 7:
+                case 6:
                     predm.name = [poleItemov objectAtIndex:i];
 //                    DLog(@"Predmet name: %@", predm.name);
                     [pole addObject:predm];
                     //   DLog(@"%@ ", predm.name);
                     break;
-                case 5:
+                case 4:
                     predm.room = [poleItemov objectAtIndex:i];
                     break;
-                case 1:
+                case 0:
                     // ?????preco mi nepinda, ze potrebuje zkonvertovat z NSSTRING do NSNumber?
                     predm.day = [poleItemov objectAtIndex:i];
                     break;
-                case 2:
+                case 1:
                     predm.start = [poleItemov objectAtIndex:i];
                     break;
-                case 4:
+                case 3:
                     
                     cislo = (int)[[poleItemov objectAtIndex:i] characterAtIndex:0]-48;
                     predm.classLength = [NSNumber numberWithInt:cislo];
