@@ -91,7 +91,7 @@
     return pole;
 }
 
-- (IBAction) setLocalDB:(NSArray *)poleNaInsert;
+- (void) setLocalDB:(NSArray *)poleNaInsert;
 {
     sqlite3_stmt *insert_statement;
     
@@ -175,7 +175,7 @@
 
 
 
-- (IBAction) nastavUsername:(UITextField *)UIUserNameTextField;
+- (void) nastavUsername:(UITextField *)UIUserNameTextField;
 {
     self.username = UIUserNameTextField.text;
 }

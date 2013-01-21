@@ -19,8 +19,8 @@
 
 - (NSMutableArray *) getLessonsFromDB;
 - (NSMutableArray *) getDataFromCSV;
-- (IBAction) setLocalDB:(NSArray *)poleNaInsert;
-- (IBAction) nastavUsername:(UITextField *)UIUserNameTextField;
+- (void) setLocalDB:(NSArray *)poleNaInsert;
+- (void) nastavUsername:(UITextField *)UIUserNameTextField;
 //-(IBAction)setLessons:(id)sender;
 //-(IBAction)addLesson:(NSString *)newLesson;
 
