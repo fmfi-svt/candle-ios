@@ -14,7 +14,7 @@
 @property(readwrite, retain) NSString *name;
 @property(readwrite, retain) NSString *room;
 @property(readwrite, retain) NSNumber *day;
-@property(readwrite, retain) NSNumber *start;
+@property(readwrite, retain) NSString *start;
 @property(readwrite, retain) NSNumber *classLength;
 
 /*
@@ -26,7 +26,7 @@
         andName:(NSString*)aName
         andRoom:(NSNumber*)aRoom
         andDay:(NSNumber*)aDay
-        andStart:(NSNumber*)aStart
+        andStart:(NSString*)aStart
         andClassLength:(NSNumber*)aClassLength;
 
 

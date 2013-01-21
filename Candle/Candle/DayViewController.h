@@ -19,7 +19,7 @@
 @property (nonatomic, retain) IBOutlet UITableView *UItabulkaRozvrh;
 
 - (IBAction)vypisPredmet:(id)sender;
-- (int) denVTyzdni:(id)sender;
+- (int) denVTyzdni;
 - (IBAction)vypisRozvrh:(id)sender;
 
 

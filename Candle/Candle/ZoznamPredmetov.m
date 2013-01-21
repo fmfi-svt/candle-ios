@@ -45,49 +45,48 @@
               }
     
     NSArray *poleItemov = [dataStr csvRows];
-   // [dataStr componentsSeparatedByString: @","];
-    DLog(@"%@",poleItemov);
+   //   NSArray *poleItemov = [dataStr componentsSeparatedByString: @","];
+   // DLog(@"%@",poleItemov);
    
     
     int i=0;
+    int cislo =0;
     NSMutableArray *pole = [[NSMutableArray alloc] init];
     
-    for (NSString *item in poleItemov) {
-        if (i>8) {
+    //typedef enum {Po,Ut,Str,St,Pi} Dni; snazil som sa vyhnut if-om cez enum
+    
+    for (NSArray *item in poleItemov) {
+        if (i>0) {
             Predmet *predm = [[Predmet alloc] init];
-            int cislo = 1;
-            int zostatok = i % 8;
-            DLog(@"zostatok: %d %@", zostatok, item);
-            switch (zostatok) {
-                case 6:
-                    predm.name = [poleItemov objectAtIndex:i];
-//                    DLog(@"Predmet name: %@", predm.name);
-                    [pole addObject:predm];
-                    //   DLog(@"%@ ", predm.name);
-                    break;
-                case 4:
-                    predm.room = [poleItemov objectAtIndex:i];
-                    break;
-                case 0:
-                    // ?????preco mi nepinda, ze potrebuje zkonvertovat z NSSTRING do NSNumber?
-                    predm.day = [poleItemov objectAtIndex:i];
-                    break;
-                case 1:
-                    predm.start = [poleItemov objectAtIndex:i];
-                    break;
-                case 3:
-                    
-                    cislo = (int)[[poleItemov objectAtIndex:i] characterAtIndex:0]-48;
-                    predm.classLength = [NSNumber numberWithInt:cislo];
-                    
-                    break;
-                default:
-                    break;
-            }
+           
+            //DLog(@"item: %@",  item);
+            
+            //Dni den = [[item objectAtIndex:0] string];
+        
+            NSString* den = [item objectAtIndex:0];
+            
+            if([den isEqualToString:@"Po"]){ cislo=1; } else
+            if([den isEqualToString:@"Ut"]){ cislo=2; } else
+            if([den isEqualToString:@"Str"]){ cislo=3; } else
+            if([den isEqualToString:@"St"]){ cislo=4; } else
+            if([den isEqualToString:@"Pi"]){ cislo=5; }
+                
+                
+            predm.day = [NSNumber numberWithInt: cislo]; //[[item objectAtIndex:0] string];//[NSNumber numberWithInt: den];
+            predm.start = [item objectAtIndex:1];
+            //predm.classLength = [item objectAtIndex:3];
+            predm.room = [item objectAtIndex:4];
+            predm.name = [item objectAtIndex:6];
+           
+            cislo = (int)[[item objectAtIndex:3] characterAtIndex:0]-48;
+            predm.classLength = [NSNumber numberWithInt:cislo];
+            [pole addObject:predm];
+            
         }
+                  
         i++;
     }
-//    DLog(@"POLE %@",pole);
+    DLog(@"POLE %@",pole);
     
     return pole;
 }
@@ -157,7 +156,7 @@
             predm.name = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement,1)];
             predm.room = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement,2)];
             predm.day = [NSNumber numberWithInt: sqlite3_column_int(sqlStatement, 3)];
-            predm.start = [NSNumber numberWithInt: sqlite3_column_int(sqlStatement, 4)];
+            predm.start = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement,4)];
             predm.classLength = [NSNumber numberWithInt: sqlite3_column_int(sqlStatement,5)];              
             
             [Zoznam addObject:predm];

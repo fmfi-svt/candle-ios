@@ -20,13 +20,17 @@
 
 - (void)viewDidLoad
 {
-    
+    NSArray *dniTyzdna = [NSArray arrayWithObjects:@"Pondelok", @"Utorok", @"Streda", @"Stvrtok", @"Piatok", @"Sobota", @"Nedela",nil];
+    int c= [self denVTyzdni];
+    DLog(@"==== %d",c);
+    _UILabelDen.text = [dniTyzdna objectAtIndex: [self denVTyzdni]];
     ZoznamPredmetov * dbPredmetov =[[ZoznamPredmetov alloc] init];
     self.polePredmetov = [dbPredmetov getDataFromCSV];
 //    [self.UInazovPredmetu setText:((Predmet *) [self.polePredmetov objectAtIndex:0]).name];
 //    [self.UImiestnostPredmetu setText:((Predmet *) [self.polePredmetov objectAtIndex:0]).room];
 //    [self.UIzaciatokPredmetu setText:( [((Predmet *) [self.polePredmetov objectAtIndex:0]).start stringValue] )];
-    DLog(@"Array Count: %d",[self.polePredmetov count]);
+//    DLog(@"Array Count: %d",[self.polePredmetov count]);
+    
     [super viewDidLoad];
     
 	
@@ -54,14 +58,15 @@
 }
 
 
--(int)denVTyzdni:(id)sender
+-(int) denVTyzdni
 {
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];   
     NSDateComponents *comps = [gregorian components:NSWeekdayCalendarUnit fromDate:[NSDate date]];
+   
     int weekday = [comps weekday];
     gregorian=nil;
     comps=nil;
-    return weekday;
+    return weekday-2;
 }
 
 
@@ -121,7 +126,7 @@
     
     // Set up the cell...
     Predmet *predm = [self.polePredmetov objectAtIndex:indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@-%@ (%@)",predm.start,predm.name,predm.room];
+    cell.textLabel.text = [NSString stringWithFormat:@"[%@]%@ (%@)",predm.start,predm.name,predm.room];
     DLog(@"Cell is %@", predm.name);
     return cell;
 

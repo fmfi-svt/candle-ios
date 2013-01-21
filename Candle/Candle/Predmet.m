@@ -11,7 +11,7 @@
 @implementation Predmet
 
 -(id)initWithName:(NSNumber*)aPredmetId
-          andName:(NSString*)aName andRoom:(NSString *)aRoom andDay:(NSNumber *)aDay andStart:(NSNumber *)aStart andClassLength:(NSNumber *)aClassLength
+          andName:(NSString*)aName andRoom:(NSString *)aRoom andDay:(NSNumber *)aDay andStart:(NSString *)aStart andClassLength:(NSNumber *)aClassLength
 {
     self = [super init];
     if(self){
