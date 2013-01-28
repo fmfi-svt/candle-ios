@@ -15,7 +15,7 @@
 @implementation ZoznamPredmetov
 
 -(NSMutableArray *) getDataFromCSV{
-    self.username = @"sulo";
+    //self.username = @"sulo";
     
     //stiahnut candle rozvrh
     NSString *stringURL = [NSString stringWithFormat: @"https://candle.fmph.uniba.sk/rozvrh/%@.csv" ,self.username];    
@@ -52,7 +52,7 @@
     int i=0;
     int cislo =0;
     NSMutableArray *pole = [[NSMutableArray alloc] init];
-    
+    _predmety = [[NSMutableArray alloc] init];
     //typedef enum {Po,Ut,Str,St,Pi} Dni; snazil som sa vyhnut if-om cez enum
     
     for (NSArray *item in poleItemov) {
@@ -65,11 +65,11 @@
         
             NSString* den = [item objectAtIndex:0];
             
-            if([den isEqualToString:@"Po"]){ cislo=1; } else
-            if([den isEqualToString:@"Ut"]){ cislo=2; } else
-            if([den isEqualToString:@"Str"]){ cislo=3; } else
-            if([den isEqualToString:@"St"]){ cislo=4; } else
-            if([den isEqualToString:@"Pi"]){ cislo=5; }
+            if([den isEqualToString:@"Po"]){ cislo=0; } else
+            if([den isEqualToString:@"Ut"]){ cislo=1; } else
+            if([den isEqualToString:@"Str"]){ cislo=2; } else
+            if([den isEqualToString:@"St"]){ cislo=3; } else
+            if([den isEqualToString:@"Pi"]){ cislo=4; }
                 
                 
             predm.day = [NSNumber numberWithInt: cislo]; //[[item objectAtIndex:0] string];//[NSNumber numberWithInt: den];
@@ -81,12 +81,12 @@
             cislo = (int)[[item objectAtIndex:3] characterAtIndex:0]-48;
             predm.classLength = [NSNumber numberWithInt:cislo];
             [pole addObject:predm];
-            
+            [_predmety addObject:predm];
         }
                   
         i++;
     }
-    DLog(@"POLE %@",pole);
+    DLog(@"POLE %@",_predmety);
     
     return pole;
 }
@@ -124,6 +124,18 @@
     
 }
 
+- (NSMutableArray *) getLessonsForDay:(int)den{
+    NSMutableArray *pole = [[NSMutableArray alloc] init];
+    for (Predmet *predm in _predmety) {
+        if([predm.day integerValue]==den){
+            [pole addObject:predm];
+        }
+    }
+    return pole;
+
+}
+
+
 
 
 
@@ -160,7 +172,7 @@
             predm.classLength = [NSNumber numberWithInt: sqlite3_column_int(sqlStatement,5)];              
             
             [Zoznam addObject:predm];
-        //    [predmety addObject:predm];
+            [_predmety addObject:predm];
         }
     }
     @catch (NSException *exception) {

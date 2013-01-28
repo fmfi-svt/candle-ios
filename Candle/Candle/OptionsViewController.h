@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ZoznamPredmetov.h"
+#import "DayViewController.h"
 
 
 @interface OptionsViewController : UIViewController

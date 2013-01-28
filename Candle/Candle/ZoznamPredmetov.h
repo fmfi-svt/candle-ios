@@ -10,15 +10,16 @@
 #import <sqlite3.h>
 #import "NSString+ParsingExtensions.h"
 @interface ZoznamPredmetov : NSObject {
-    sqlite3 *db;
-  //  NSMutableArray *predmety;
+    sqlite3 *db;    
 }
 
 @property(readwrite,retain) NSString *username;
+@property(readwrite,retain) NSMutableArray *predmety;
 
 
 - (NSMutableArray *) getLessonsFromDB;
 - (NSMutableArray *) getDataFromCSV;
+- (NSMutableArray *) getLessonsForDay:(int)den;
 - (void) setLocalDB:(NSArray *)poleNaInsert;
 - (void) nastavUsername:(UITextField *)UIUserNameTextField;
 //-(IBAction)setLessons:(id)sender;

@@ -23,13 +23,15 @@
     NSArray *dniTyzdna = [NSArray arrayWithObjects:@"Pondelok", @"Utorok", @"Streda", @"Stvrtok", @"Piatok", @"Sobota", @"Nedela",nil];
     int c= [self denVTyzdni];
     DLog(@"==== %d",c);
+    
     _UILabelDen.text = [dniTyzdna objectAtIndex: [self denVTyzdni]];
     ZoznamPredmetov * dbPredmetov =[[ZoznamPredmetov alloc] init];
-    self.polePredmetov = [dbPredmetov getDataFromCSV];
-//    [self.UInazovPredmetu setText:((Predmet *) [self.polePredmetov objectAtIndex:0]).name];
-//    [self.UImiestnostPredmetu setText:((Predmet *) [self.polePredmetov objectAtIndex:0]).room];
-//    [self.UIzaciatokPredmetu setText:( [((Predmet *) [self.polePredmetov objectAtIndex:0]).start stringValue] )];
-//    DLog(@"Array Count: %d",[self.polePredmetov count]);
+//    dbPredmetov.username = @"jakubko";
+    dbPredmetov.username = @"sulo";    
+    [dbPredmetov getDataFromCSV];
+    self.polePredmetov = [dbPredmetov getLessonsForDay:c];
+
+    _UILabelUsername.text = [dbPredmetov username];
     
     [super viewDidLoad];
     
@@ -70,33 +72,6 @@
 }
 
 
-
-
-- (void)vypisRozvrh:(id)sender
-{   
-    
- //   NSArray * predmety = [NSArray arrayWithObjects: @"telesna", @"matematika", @"pocitace", nil];
-  //  NSMutableArray *array = [NSMutableArray arrayWithObjects: @"one", @"two", @"three", @"four", nil];
-  
-  //   NSString *tempPredmet;
-    
-   // for (NSString * str in self.polePredmetov) {
-       // tempPredmet = [NSString stringWithFormat:@"%@, %@", self.polePredmetov, str];
-       // tempPredmety = [tempPredmety stringByAppendingString:str];
-  //  }
-//    rozvrhLabel.text = tempPredmet;
-    static NSInteger currentIndex = 0;
-    if (++currentIndex == [self.polePredmetov count]) {
-        currentIndex=0;
-    }else{
-        //[UItabulkaRozvrh cellForRowAtIndexPath:];
-  //      Predmet *predmet = (Predmet *) [self.polePredmetov objectAtIndex: currentIndex];
- //       [self.UInazovPredmetu setText:predmet.name];
- //       [self.UImiestnostPredmetu setText:predmet.room];
- //       [self.UIzaciatokPredmetu setText:[predmet.start stringValue]];
-    }
-    
-}
 
 
 
