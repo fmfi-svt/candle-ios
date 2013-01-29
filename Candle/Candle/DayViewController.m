@@ -26,9 +26,26 @@
     
     _UILabelDen.text = [dniTyzdna objectAtIndex: [self denVTyzdni]];
     ZoznamPredmetov * dbPredmetov =[[ZoznamPredmetov alloc] init];
-//    dbPredmetov.username = @"jakubko";
-    dbPredmetov.username = @"sulo";    
+    dbPredmetov.username = @"sulo";
+    
+    if([dbPredmetov checkConnection]){
+        [dbPredmetov downloadCandleCSV:dbPredmetov.username];        
+    } else {
+        UIAlertView *errorView;        
+        errorView = [[UIAlertView alloc]
+                     initWithTitle: NSLocalizedString(@"Network error", @"Network error")
+                     message: NSLocalizedString(@"No internet connection found, this application requires an internet connection to gather the data required.", @"Network error")
+                     delegate: self
+                     cancelButtonTitle: NSLocalizedString(@"Close", @"Network error") otherButtonTitles: nil];
+        
+        [errorView show];
+        
+        
+    }
+    
+    
     [dbPredmetov getDataFromCSV];
+    
     self.polePredmetov = [dbPredmetov getLessonsForDay:c];
 
     _UILabelUsername.text = [dbPredmetov username];
@@ -36,27 +53,6 @@
     [super viewDidLoad];
     
 	
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
-
--(void)vypisPredmet:(id)sender
-{
-//    static NSInteger currentIndex = 0;
-//    if (++currentIndex == [self.polePredmetov count]) {
-//        currentIndex=0;
-//    }else{
-//        Predmet *predmet = (Predmet *) [self.polePredmetov objectAtIndex: currentIndex];
-//        [self.UInazovPredmetu setText:predmet.name];
-//        [self.UImiestnostPredmetu setText:predmet.room];
-//        [self.UIzaciatokPredmetu setText:[predmet.start stringValue]];
-//}
 }
 
 
@@ -70,9 +66,6 @@
     comps=nil;
     return weekday-2;
 }
-
-
-
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -106,21 +99,20 @@
     return cell;
 
      }
-     
-//-(IBAction)addLesson:(id)sender
-//{
-//    [UItabulkaRozvrh beginUpdates];
-//    [polePredmetov addObject:@"Lesson"];
-//    //NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:[polePredmetov count]-1 inSection:1]];
-//    [[self UItabulkaRozvrh] insertRowsAtIndexPaths:polePredmetov withRowAnimation:UITableViewRowAnimationTop];
-//    [UItabulkaRozvrh endUpdates];
-//}
 
 
 - (void)backgroundTouchedHideKeyboard:(id)sender
 {
     //    [tempTextBox resignFirstResponder];
 }
+
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 
 
 
@@ -131,12 +123,8 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
     self.polePredmetov =nil;
-    //    self.UInazovPredmetu = nil;
-    //    self.UImiestnostPredmetu = nil;
-    //    self.UIzaciatokPredmetu = nil;
     self.UItabulkaRozvrh = nil;
-    //    self.candleNameTextBox = nil;
-    //    self.rozvrhLabel = nil;
+
     [super viewDidUnload];
 }
 

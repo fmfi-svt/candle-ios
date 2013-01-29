@@ -12,57 +12,77 @@
 
 
 
+
 @implementation ZoznamPredmetov
 
+
+-(bool) checkConnection{
+    
+    
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus internetStatus = [reachability currentReachabilityStatus];
+    
+    if(internetStatus == NotReachable) {
+        
+        
+        return false;
+    }
+    return true;
+}
+
+
+
+-(NSString *) downloadCandleCSV:(NSString *)nazovRozvrhu{
+       
+
+NSString *stringURL = [NSString stringWithFormat: @"https://candle.fmph.uniba.sk/rozvrh/%@.csv" ,nazovRozvrhu];
+
+NSURL  *url = [NSURL URLWithString:stringURL];
+NSData *urlData = [NSData dataWithContentsOfURL:url];
+NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+NSString  *documentsDirectory = [paths objectAtIndex:0];
+
+NSString  *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,@"candle.csv"];
+if ( urlData )
+{
+    
+    [urlData writeToFile:filePath atomically:YES];
+}     
+    
+    return filePath;
+    
+}
+
+
+
 -(NSMutableArray *) getDataFromCSV{
-    //self.username = @"sulo";
+
     
-    //stiahnut candle rozvrh
-    NSString *stringURL = [NSString stringWithFormat: @"https://candle.fmph.uniba.sk/rozvrh/%@.csv" ,self.username];    
+   NSError *error;
     
-    NSURL  *url = [NSURL URLWithString:stringURL];
-    NSData *urlData = [NSData dataWithContentsOfURL:url];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString  *documentsDirectory = [paths objectAtIndex:0];
-    
     NSString  *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,@"candle.csv"];
-    if ( urlData )
-    {
-
-        [urlData writeToFile:filePath atomically:YES];
-    }
-    
-    
-    //jednoduchy parser
-      NSError *error;
-    //filePath @"candle.csv"
     
     NSString *dataStr = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
     if (dataStr) {
-        //DLog(@"%@", dataStr);
+      
     } else {
         DLog(@"%@",[error localizedDescription]);
               }
     
     NSArray *poleItemov = [dataStr csvRows];
-   //   NSArray *poleItemov = [dataStr componentsSeparatedByString: @","];
-   // DLog(@"%@",poleItemov);
-   
+  
     
     int i=0;
     int cislo =0;
     NSMutableArray *pole = [[NSMutableArray alloc] init];
     _predmety = [[NSMutableArray alloc] init];
-    //typedef enum {Po,Ut,Str,St,Pi} Dni; snazil som sa vyhnut if-om cez enum
-    
+     
     for (NSArray *item in poleItemov) {
         if (i>0) {
-            Predmet *predm = [[Predmet alloc] init];
-           
-            //DLog(@"item: %@",  item);
-            
-            //Dni den = [[item objectAtIndex:0] string];
-        
+            Predmet *predm = [[Predmet alloc] init];           
+                
             NSString* den = [item objectAtIndex:0];
             
             if([den isEqualToString:@"Po"]){ cislo=0; } else
@@ -72,14 +92,13 @@
             if([den isEqualToString:@"Pi"]){ cislo=4; }
                 
                 
-            predm.day = [NSNumber numberWithInt: cislo]; //[[item objectAtIndex:0] string];//[NSNumber numberWithInt: den];
-            predm.start = [item objectAtIndex:1];
-            //predm.classLength = [item objectAtIndex:3];
+            predm.day = [NSNumber numberWithInt: cislo];
+            predm.start = [item objectAtIndex:1];           
             predm.room = [item objectAtIndex:4];
-            predm.name = [item objectAtIndex:6];
-           
+            predm.name = [item objectAtIndex:6];           
             cislo = (int)[[item objectAtIndex:3] characterAtIndex:0]-48;
             predm.classLength = [NSNumber numberWithInt:cislo];
+            
             [pole addObject:predm];
             [_predmety addObject:predm];
         }
@@ -191,44 +210,6 @@
 {
     self.username = UIUserNameTextField.text;
 }
-
-
-/*
-
--(IBAction)setLessons:(id)sender
-{
-    predmety = [NSMutableArray arrayWithObjects: @"telesna", @"matematika", @"pocitace", nil];
-}
--(IBAction)addLesson:(NSString*)newLesson
-{
-   [predmety addObject:newLesson];
-}
-
-
-
--(IBAction)vypisPredmety:(UILabel *)rozvrhLabel;
-{
-    
-    //  NSMutableArray *array = [NSMutableArray arrayWithObjects: @"one", @"two", @"three", @"four", nil];
-    
-    NSString *tempPredmety;
-    
-    for (NSString *str in predmety) {
-        tempPredmety = [NSString stringWithFormat:@"%@, %@", tempPredmety, str];       
-    }
-    rozvrhLabel.text = tempPredmety;
-    
-}
-
--(IBAction)vypisPredmetyNaDen:first:(UILabel*)rozvrhLabel second:(NSNumber*)den;
-{
-    NSString *tempPredmety;
-    for (NSString *str in predmety) {
-        tempPredmety = [NSString stringWithFormat:@"%@, %@", tempPredmety, str];
-    }
-    rozvrhLabel.text = tempPredmety;
-}
-*/
 
 
 

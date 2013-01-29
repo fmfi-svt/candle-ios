@@ -8,7 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
+#import <SystemConfiguration/SystemConfiguration.h>
+#import "Reachability.h"
 #import "NSString+ParsingExtensions.h"
+
 @interface ZoznamPredmetov : NSObject {
     sqlite3 *db;    
 }
@@ -17,15 +20,18 @@
 @property(readwrite,retain) NSMutableArray *predmety;
 
 
-- (NSMutableArray *) getLessonsFromDB;
+- (void) nastavUsername:(UITextField *)UIUserNameTextField;
+
+// toto by mohol byt nejaka CandleNet clasa
+- (bool) checkConnection;
+- (NSString *) downloadCandleCSV:(NSString *)nazovRozvrhu;
+
+// toto zoznam predmetov
 - (NSMutableArray *) getDataFromCSV;
 - (NSMutableArray *) getLessonsForDay:(int)den;
+
+// CandleLocalDB napriklad?
 - (void) setLocalDB:(NSArray *)poleNaInsert;
-- (void) nastavUsername:(UITextField *)UIUserNameTextField;
-//-(IBAction)setLessons:(id)sender;
-//-(IBAction)addLesson:(NSString *)newLesson;
+- (NSMutableArray *) getLessonsFromDB;
 
-//-(IBAction)vypisPredmety:(UILabel *)rozvrhLabel;
-
-//-(IBAction)vypisPredmetyNaDen:first:(UILabel*)rozvrhLabel second:(NSNumber*)den;
 @end

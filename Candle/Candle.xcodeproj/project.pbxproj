@@ -10,6 +10,8 @@
 		860F7881169CC062004A8389 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 860F7880169CC062004A8389 /* libsqlite3.0.dylib */; };
 		861F634016AAFFDC00AB185A /* NSString+ParsingExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 861F633F16AAFFDC00AB185A /* NSString+ParsingExtensions.m */; };
 		86571391169CB3230006F066 /* rozvrh.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 86571390169CB3230006F066 /* rozvrh.sqlite */; };
+		86881F0516B7F9ED004DA126 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 86881F0416B7F9ED004DA126 /* Reachability.m */; };
+		86881F0816B801F9004DA126 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86881F0716B801F9004DA126 /* SystemConfiguration.framework */; };
 		868CF7621662D53C00DBD9BC /* ZoznamPredmetov.m in Sources */ = {isa = PBXBuildFile; fileRef = 868CF7611662D53C00DBD9BC /* ZoznamPredmetov.m */; };
 		868CF7661662DFCC00DBD9BC /* Predmet.m in Sources */ = {isa = PBXBuildFile; fileRef = 868CF7651662DFCC00DBD9BC /* Predmet.m */; };
 		869D6A0716A721A9004553CB /* 20-gear2.png in Resources */ = {isa = PBXBuildFile; fileRef = 869D6A0516A721A9004553CB /* 20-gear2.png */; };
@@ -53,6 +55,9 @@
 		861F633E16AAFFDC00AB185A /* NSString+ParsingExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ParsingExtensions.h"; sourceTree = "<group>"; };
 		861F633F16AAFFDC00AB185A /* NSString+ParsingExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ParsingExtensions.m"; sourceTree = "<group>"; };
 		86571390169CB3230006F066 /* rozvrh.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = rozvrh.sqlite; sourceTree = "<group>"; };
+		86881F0316B7F9EC004DA126 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		86881F0416B7F9ED004DA126 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		86881F0716B801F9004DA126 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		868CF7601662D53C00DBD9BC /* ZoznamPredmetov.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoznamPredmetov.h; sourceTree = "<group>"; };
 		868CF7611662D53C00DBD9BC /* ZoznamPredmetov.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ZoznamPredmetov.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		868CF7641662DFCC00DBD9BC /* Predmet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Predmet.h; sourceTree = "<group>"; };
@@ -95,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86881F0816B801F9004DA126 /* SystemConfiguration.framework in Frameworks */,
 				860F7881169CC062004A8389 /* libsqlite3.0.dylib in Frameworks */,
 				86D2EC1916401AAD002428F1 /* UIKit.framework in Frameworks */,
 				86D2EC1B16401AAD002428F1 /* Foundation.framework in Frameworks */,
@@ -118,6 +124,7 @@
 		86D2EC0916401AAD002428F1 = {
 			isa = PBXGroup;
 			children = (
+				86881F0716B801F9004DA126 /* SystemConfiguration.framework */,
 				860F7880169CC062004A8389 /* libsqlite3.0.dylib */,
 				86D2EC1E16401AAD002428F1 /* Candle */,
 				86D2EC5016401AAE002428F1 /* CandleTests */,
@@ -165,6 +172,8 @@
 				868CF7601662D53C00DBD9BC /* ZoznamPredmetov.h */,
 				868CF7611662D53C00DBD9BC /* ZoznamPredmetov.m */,
 				861F633E16AAFFDC00AB185A /* NSString+ParsingExtensions.h */,
+				86881F0316B7F9EC004DA126 /* Reachability.h */,
+				86881F0416B7F9ED004DA126 /* Reachability.m */,
 				861F633F16AAFFDC00AB185A /* NSString+ParsingExtensions.m */,
 				868CF7641662DFCC00DBD9BC /* Predmet.h */,
 				868CF7651662DFCC00DBD9BC /* Predmet.m */,
@@ -333,6 +342,7 @@
 				868CF7621662D53C00DBD9BC /* ZoznamPredmetov.m in Sources */,
 				868CF7661662DFCC00DBD9BC /* Predmet.m in Sources */,
 				861F634016AAFFDC00AB185A /* NSString+ParsingExtensions.m in Sources */,
+				86881F0516B7F9ED004DA126 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

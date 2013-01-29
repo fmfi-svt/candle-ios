@@ -19,7 +19,7 @@
 @property (nonatomic, retain) IBOutlet UILabel *UILabelUsername;
 @property (nonatomic, retain) IBOutlet UITableView *UItabulkaRozvrh;
 
-- (IBAction)vypisPredmet:(id)sender;
+
 - (int) denVTyzdni;
 
 
