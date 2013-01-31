@@ -20,11 +20,11 @@
 
 - (void)viewDidLoad
 {
-    NSArray *dniTyzdna = [NSArray arrayWithObjects:@"Pondelok", @"Utorok", @"Streda", @"Stvrtok", @"Piatok", @"Sobota", @"Nedela",nil];
+    NSArray *dniTyzdna = @[@"Pondelok", @"Utorok", @"Streda", @"Stvrtok", @"Piatok", @"Sobota", @"Nedela"];
     int c= [self denVTyzdni];
     DLog(@"==== %d",c);
     
-    _UILabelDen.text = [dniTyzdna objectAtIndex: [self denVTyzdni]];
+    self.UILabelDen.text = [dniTyzdna objectAtIndex: [self denVTyzdni]];
     ZoznamPredmetov * dbPredmetov =[[ZoznamPredmetov alloc] init];
     dbPredmetov.username = @"sulo";
     
@@ -48,7 +48,7 @@
     
     self.polePredmetov = [dbPredmetov getLessonsForDay:c];
 
-    _UILabelUsername.text = [dbPredmetov username];
+    self.UILabelUsername.text = [dbPredmetov username];
     
     [super viewDidLoad];
     
