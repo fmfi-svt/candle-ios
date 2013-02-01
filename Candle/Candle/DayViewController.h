@@ -20,7 +20,7 @@
 @property (nonatomic, retain) IBOutlet UITableView *UItabulkaRozvrh;
 
 
-- (int) denVTyzdni;
+- (NSNumber *) denVTyzdni;
 
 
 
