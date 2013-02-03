@@ -16,20 +16,12 @@
 @implementation ZoznamPredmetov
 
 
-+ (id) zoznamPredmetovWithURL: (NSString *)nick {
++ (id) zoznamPredmetovWithDefaultURLandNick: (NSString *)nick {
     ZoznamPredmetov *zp = [[self alloc] init];
     if ([zp checkConnection]) {
         [zp getDataFromCSV:[zp downloadCandleCSV:nick]];
     } else {
-        UIAlertView *errorView;
-        errorView = [[UIAlertView alloc]
-                     initWithTitle: NSLocalizedString(@"Network error", @"Network error")
-                     message: NSLocalizedString(@"No internet connection found, this application requires an internet connection to gather the data required.", @"Network error")
-                     delegate: self
-                     cancelButtonTitle: NSLocalizedString(@"Close", @"Network error") otherButtonTitles: nil];
-        
-        [errorView show];
-        
+        return nil;       
         
     }
 

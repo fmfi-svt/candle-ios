@@ -22,7 +22,7 @@
 
 - (void) nastavUsername:(UITextField *)UIUserNameTextField;
 
-+ (id) zoznamPredmetovWithURL: (NSString *)nick;
++ (id) zoznamPredmetovWithDefaultURLandNick: (NSString *)nick;
 
 // toto by mohol byt nejaka CandleNet clasa
 - (bool) checkConnection;
