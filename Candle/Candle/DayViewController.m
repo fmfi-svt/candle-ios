@@ -20,9 +20,9 @@
 
 - (void)viewDidLoad
 {
-    NSArray *dniTyzdna = @[@"Pondelok", @"Utorok", @"Streda", @"Stvrtok", @"Piatok", @"Sobota", @"Nedela"];
+    NSArray *dniTyzdna = @[@"Nedela", @"Pondelok", @"Utorok", @"Streda", @"Stvrtok", @"Piatok", @"Sobota"];
     NSNumber *den= [self denVTyzdni];
-    
+ 
     self.UILabelDen.text = [dniTyzdna objectAtIndex: [den intValue]];
     ZoznamPredmetov * dbPredmetov =[[ZoznamPredmetov alloc] init];
     dbPredmetov.username = @"sulo";
@@ -59,8 +59,9 @@
 {
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];   
     NSDateComponents *comps = [gregorian components:NSWeekdayCalendarUnit fromDate:[NSDate date]];
-   
-    NSNumber *weekday = [NSNumber numberWithInt:[comps weekday]-2];
+    int c = [comps weekday]-1;
+    
+    NSNumber *weekday = [NSNumber numberWithInt:c];
     gregorian=nil;
     comps=nil;
     return weekday;
