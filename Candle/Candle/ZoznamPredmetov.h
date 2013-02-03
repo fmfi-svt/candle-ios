@@ -25,11 +25,11 @@
 + (id) zoznamPredmetovWithDefaultURLandNick: (NSString *)nick;
 
 // toto by mohol byt nejaka CandleNet clasa
-- (bool) checkConnection;
-- (NSString *) downloadCandleCSV:(NSString *)nazovRozvrhu;
++ (bool) checkConnection;
++ (NSString *) downloadCandleCSV:(NSString *)nazovRozvrhu;
 
 // toto zoznam predmetov
-- (NSMutableArray *) getDataFromCSV:(NSString *)filePath;
+- (bool) getDataFromCSV:(NSString *)filePath;
 - (NSMutableArray *) getLessonsForDay:(int)den;
 
 

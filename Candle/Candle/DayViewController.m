@@ -24,8 +24,7 @@
 
 
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     NSArray *dniTyzdna = @[@"Nedela", @"Pondelok", @"Utorok", @"Streda", @"Stvrtok", @"Piatok", @"Sobota"];
     NSNumber *den= [self denVTyzdni];
  
@@ -33,8 +32,8 @@
     ZoznamPredmetov * dbPredmetov =[[ZoznamPredmetov alloc] init];
     dbPredmetov.username = @"sulo";
     
-    if([dbPredmetov checkConnection]){
-        [dbPredmetov downloadCandleCSV:dbPredmetov.username];        
+    if([ZoznamPredmetov checkConnection]){
+        [ZoznamPredmetov downloadCandleCSV:dbPredmetov.username];
     } else {
         UIAlertView *errorView;        
         errorView = [[UIAlertView alloc]
@@ -49,13 +48,22 @@
     }
     
     
-    [dbPredmetov getDataFromCSV:dbPredmetov.username];
-    
-    self.polePredmetov = [dbPredmetov getLessonsForDay:[den intValue]];
-
-    self.UILabelUsername.text = [dbPredmetov username];
-    
-    [super viewDidLoad];
+    if([dbPredmetov getDataFromCSV:dbPredmetov.username]){
+        self.polePredmetov = [dbPredmetov getLessonsForDay:[den intValue]];
+        self.UILabelUsername.text = [dbPredmetov username];
+    } else {
+            UIAlertView *errorView;
+            errorView = [[UIAlertView alloc]
+                     initWithTitle: NSLocalizedString(@"File read error", @"File read error")
+                     message: NSLocalizedString(@"File not found, unable to read candle.csv.", @"File read error")
+                     delegate: self
+                     cancelButtonTitle: NSLocalizedString(@"Close", @"File read error") otherButtonTitles: nil];
+        
+            [errorView show];
+        
+        
+        }
+        [super viewDidLoad];
     
 	
 }
