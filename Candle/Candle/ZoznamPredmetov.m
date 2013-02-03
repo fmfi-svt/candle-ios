@@ -16,14 +16,11 @@
 @implementation ZoznamPredmetov
 
 
-
-
--(id)initFromUrl:(NSString *)nick{
-    self.username=nick;
-    
-    if(self.checkConnection){
-        [self getDataFromCSV:[self downloadCandleCSV:nick]];
-    }  else {
++ (id) zoznamPredmetovWithURL: (NSString *)nick {
+    ZoznamPredmetov *zp = [[self alloc] init];
+    if ([zp checkConnection]) {
+        [zp getDataFromCSV:[zp downloadCandleCSV:nick]];
+    } else {
         UIAlertView *errorView;
         errorView = [[UIAlertView alloc]
                      initWithTitle: NSLocalizedString(@"Network error", @"Network error")
@@ -35,7 +32,8 @@
         
         
     }
-    return self;
+
+    return zp;
 }
 
 

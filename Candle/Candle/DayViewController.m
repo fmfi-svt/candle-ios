@@ -18,6 +18,12 @@
 
 @implementation DayViewController
 
+
+
+
+
+
+
 - (void)viewDidLoad
 {
     NSArray *dniTyzdna = @[@"Nedela", @"Pondelok", @"Utorok", @"Streda", @"Stvrtok", @"Piatok", @"Sobota"];
