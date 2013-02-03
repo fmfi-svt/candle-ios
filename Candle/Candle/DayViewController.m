@@ -10,68 +10,37 @@
 #import "Predmet.h"
 #import "ZoznamPredmetov.h"
 
-
-
 @interface DayViewController ()
 @end
 
-
 @implementation DayViewController
-
-
-
-
-
-
 
 - (void)viewDidLoad{
     NSArray *dniTyzdna = @[@"Nedela", @"Pondelok", @"Utorok", @"Streda", @"Stvrtok", @"Piatok", @"Sobota"];
     NSNumber *den= [self denVTyzdni];
- 
-    self.UILabelDen.text = [dniTyzdna objectAtIndex: [den intValue]];
-    ZoznamPredmetov * dbPredmetov =[[ZoznamPredmetov alloc] init];
-    dbPredmetov.username = @"sulo";
     
-    if([ZoznamPredmetov checkConnection]){
-        [ZoznamPredmetov downloadCandleCSV:dbPredmetov.username];
+    self.UILabelDen.text = [dniTyzdna objectAtIndex: [den intValue]];
+    NSError *error;
+    ZoznamPredmetov * zoznamPredmetov = [ZoznamPredmetov zoznamPredmetovWithDefaultURLandNick:@"sulo" AndWithError:&error];
+    if(zoznamPredmetov){
+        self.polePredmetov = [zoznamPredmetov getLessonsForDay:[den intValue]];
+        self.UILabelUsername.text = [zoznamPredmetov username];
     } else {
-        UIAlertView *errorView;        
+        UIAlertView *errorView;
         errorView = [[UIAlertView alloc]
                      initWithTitle: NSLocalizedString(@"Network error", @"Network error")
-                     message: NSLocalizedString(@"No internet connection found, this application requires an internet connection to gather the data required.", @"Network error")
+                     message: [error localizedDescription]
                      delegate: self
                      cancelButtonTitle: NSLocalizedString(@"Close", @"Network error") otherButtonTitles: nil];
         
         [errorView show];
-        
-        
-    }
-    
-    
-    if([dbPredmetov getDataFromCSV:dbPredmetov.username]){
-        self.polePredmetov = [dbPredmetov getLessonsForDay:[den intValue]];
-        self.UILabelUsername.text = [dbPredmetov username];
-    } else {
-            UIAlertView *errorView;
-            errorView = [[UIAlertView alloc]
-                     initWithTitle: NSLocalizedString(@"File read error", @"File read error")
-                     message: NSLocalizedString(@"File not found, unable to read candle.csv.", @"File read error")
-                     delegate: self
-                     cancelButtonTitle: NSLocalizedString(@"Close", @"File read error") otherButtonTitles: nil];
-        
-            [errorView show];
-        
-        
-        }
-        [super viewDidLoad];
-    
-	
+    }    
+    [super viewDidLoad];
 }
-
 
 -(NSNumber *) denVTyzdni
 {
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];   
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *comps = [gregorian components:NSWeekdayCalendarUnit fromDate:[NSDate date]];
     int c = [comps weekday]-1;
     
@@ -80,7 +49,6 @@
     comps=nil;
     return weekday;
 }
-
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -95,14 +63,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-   
+    
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                       reuseIdentifier:CellIdentifier];
+                                      reuseIdentifier:CellIdentifier];
         
     }
     
@@ -111,34 +79,25 @@
     cell.textLabel.text = [NSString stringWithFormat:@"[%@]%@ (%@)",predm.start,predm.name,predm.room];
     DLog(@"Cell is %@", predm.name);
     return cell;
+    
+}
 
-     }
-
-
-- (void)backgroundTouchedHideKeyboard:(id)sender
-{
+- (void)backgroundTouchedHideKeyboard:(id)sender{
     //    [tempTextBox resignFirstResponder];
 }
 
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-
-
-
-- (void)viewDidUnload
-{
-    
-    
+- (void)viewDidUnload{
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
     self.polePredmetov =nil;
     self.UItabulkaRozvrh = nil;
-
+    
     [super viewDidUnload];
 }
 

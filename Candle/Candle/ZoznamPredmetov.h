@@ -22,14 +22,15 @@
 
 - (void) nastavUsername:(UITextField *)UIUserNameTextField;
 
-+ (id) zoznamPredmetovWithDefaultURLandNick: (NSString *)nick;
++ (id) zoznamPredmetovWithDefaultURLandNick: (NSString *)nick AndWithError: (NSError **) error;
 
 // toto by mohol byt nejaka CandleNet clasa
-+ (bool) checkConnection;
-+ (NSString *) downloadCandleCSV:(NSString *)nazovRozvrhu;
++ (BOOL) checkConnection;
++ (BOOL) downloadCandleCSV:(NSString *)nazovRozvrhu;
++ (NSString *) downloadedCSVFilePath;
 
 // toto zoznam predmetov
-- (bool) getDataFromCSV:(NSString *)filePath;
+- (BOOL) getDataFromCSV:(NSString *)filePath;
 - (NSMutableArray *) getLessonsForDay:(int)den;
 
 

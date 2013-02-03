@@ -9,57 +9,72 @@
 #import "ZoznamPredmetov.h"
 #import "Predmet.h"
 
-
-
-
-
 @implementation ZoznamPredmetov
 
-
-+ (id) zoznamPredmetovWithDefaultURLandNick: (NSString *)nick {
++ (id) zoznamPredmetovWithDefaultURLandNick: (NSString *)nick AndWithError: (NSError **) error{
+    
     ZoznamPredmetov *zp = [[self alloc] init];
     if ([ZoznamPredmetov checkConnection]) {
-        if([zp getDataFromCSV:[ZoznamPredmetov downloadCandleCSV:nick]]){
-            return zp;
+        if([ZoznamPredmetov downloadCandleCSV:nick]){
+            if([zp getDataFromCSV:[ZoznamPredmetov downloadedCSVFilePath]]){
+                return zp;
+            } else {
+                NSDictionary* errorDictionary = @{NSLocalizedDescriptionKey : @"Nepodarilo sa nacitat zo suboru."};
+                if (error != NULL) {
+                    *error = [NSError errorWithDomain:@"error" code:100 userInfo:errorDictionary];
+                }                
+            }
+        } else {
+            NSDictionary* errorDictionary = @{NSLocalizedDescriptionKey : @"Nepodarilo sa stiahnut rozvrh."};
+            if (error != NULL) {
+                *error = [NSError errorWithDomain:@"error" code:100 userInfo:errorDictionary];
+            }
+        }        
+    } else {
+        NSDictionary* errorDictionary = @{NSLocalizedDescriptionKey : @"Nie si pripojeny na net"};
+        if (error != NULL) {
+            *error = [NSError errorWithDomain:@"error" code:100 userInfo:errorDictionary];
         }
     }
     return nil;
 }
 
-+(bool) checkConnection{
++(BOOL) checkConnection{
     Reachability *reachability = [Reachability reachabilityForInternetConnection];
     NetworkStatus internetStatus = [reachability currentReachabilityStatus];
     if(internetStatus == NotReachable) {
-        return false;
+        return NO;
     }
-    return true;
+    return YES;
 }
 
-+(NSString *) downloadCandleCSV:(NSString *)nazovRozvrhu{
++(BOOL) downloadCandleCSV:(NSString *)nazovRozvrhu{
     
     NSString *stringURL = [NSString stringWithFormat: @"https://candle.fmph.uniba.sk/rozvrh/%@.csv" ,nazovRozvrhu];
     NSURL  *url = [NSURL URLWithString:stringURL];
     NSData *urlData = [NSData dataWithContentsOfURL:url];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString  *documentsDirectory = [paths objectAtIndex:0];
-    
-    NSString  *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,@"candle.csv"];
     if ( urlData )
     {
-        [urlData writeToFile:filePath atomically:YES];
+        [urlData writeToFile:[ZoznamPredmetov downloadedCSVFilePath] atomically:YES];
+        return YES;
     }
-    return filePath;
+    return NO;
+}
+
++ (NSString *) downloadedCSVFilePath{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString  *documentsDirectory = [paths objectAtIndex:0];
+    return [NSString stringWithFormat:@"%@/%@", documentsDirectory,@"candle.csv"];
 }
 
 
-
--(bool) getDataFromCSV:(NSString *)filePath{
+-(BOOL) getDataFromCSV:(NSString *)filePath{
     NSError *error;
     NSString *dataStr = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
     if (dataStr) {        
     } else {
         DLog(@"%@",[error localizedDescription]);
-        return false;
+        return NO;
     }
     
     NSMutableArray *poleItemov = [[dataStr csvRows] mutableCopy];    
@@ -84,7 +99,7 @@
     }
     DLog(@"POLE %@",self.predmety);
     
-    return true;
+    return YES;
 }
 
 
