@@ -22,16 +22,16 @@
 
 - (void) nastavUsername:(UITextField *)UIUserNameTextField;
 
+-(id)initFromUrl:(NSString *)nick;
+
 // toto by mohol byt nejaka CandleNet clasa
 - (bool) checkConnection;
 - (NSString *) downloadCandleCSV:(NSString *)nazovRozvrhu;
 
 // toto zoznam predmetov
-- (NSMutableArray *) getDataFromCSV;
+- (NSMutableArray *) getDataFromCSV:(NSString *)filePath;
 - (NSMutableArray *) getLessonsForDay:(int)den;
 
-// CandleLocalDB napriklad?
-- (void) setLocalDB:(NSArray *)poleNaInsert;
-- (NSMutableArray *) getLessonsFromDB;
+
 
 @end

@@ -43,7 +43,7 @@
     }
     
     
-    [dbPredmetov getDataFromCSV];
+    [dbPredmetov getDataFromCSV:dbPredmetov.username];
     
     self.polePredmetov = [dbPredmetov getLessonsForDay:[den intValue]];
 
