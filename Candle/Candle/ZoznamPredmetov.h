@@ -33,6 +33,9 @@
 - (BOOL) getDataFromCSV:(NSString *)filePath;
 - (NSMutableArray *) getLessonsForDay:(int)den;
 
+// CandleLocalDB napriklad?
+- (void) setLocalDbFromParsedXML:(NSArray *)poleNaInsert;
+- (NSMutableArray *) getLessonsFromDB;
 
 
 @end
