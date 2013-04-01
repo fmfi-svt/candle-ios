@@ -14,6 +14,8 @@
 		86881F0816B801F9004DA126 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86881F0716B801F9004DA126 /* SystemConfiguration.framework */; };
 		868CF7621662D53C00DBD9BC /* ZoznamPredmetov.m in Sources */ = {isa = PBXBuildFile; fileRef = 868CF7611662D53C00DBD9BC /* ZoznamPredmetov.m */; };
 		868CF7661662DFCC00DBD9BC /* Predmet.m in Sources */ = {isa = PBXBuildFile; fileRef = 868CF7651662DFCC00DBD9BC /* Predmet.m */; };
+		868F31B01709DAC500AAC156 /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 868F31AF1709DAC500AAC156 /* TBXML.m */; };
+		868F31B41709DB9500AAC156 /* XMLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 868F31B31709DB9500AAC156 /* XMLHandler.m */; };
 		869D6A0716A721A9004553CB /* 20-gear2.png in Resources */ = {isa = PBXBuildFile; fileRef = 869D6A0516A721A9004553CB /* 20-gear2.png */; };
 		869D6A0816A721A9004553CB /* 140-gradhat.png in Resources */ = {isa = PBXBuildFile; fileRef = 869D6A0616A721A9004553CB /* 140-gradhat.png */; };
 		86D2EC1916401AAD002428F1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86D2EC1816401AAD002428F1 /* UIKit.framework */; };
@@ -62,6 +64,10 @@
 		868CF7611662D53C00DBD9BC /* ZoznamPredmetov.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ZoznamPredmetov.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		868CF7641662DFCC00DBD9BC /* Predmet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Predmet.h; sourceTree = "<group>"; };
 		868CF7651662DFCC00DBD9BC /* Predmet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Predmet.m; sourceTree = "<group>"; };
+		868F31AF1709DAC500AAC156 /* TBXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBXML.m; sourceTree = "<group>"; };
+		868F31B11709DAE000AAC156 /* TBXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBXML.h; sourceTree = "<group>"; };
+		868F31B21709DB9500AAC156 /* XMLHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLHandler.h; sourceTree = "<group>"; };
+		868F31B31709DB9500AAC156 /* XMLHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLHandler.m; sourceTree = "<group>"; };
 		869D6A0516A721A9004553CB /* 20-gear2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "20-gear2.png"; sourceTree = "<group>"; };
 		869D6A0616A721A9004553CB /* 140-gradhat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "140-gradhat.png"; sourceTree = "<group>"; };
 		86D2EC1416401AAD002428F1 /* Candle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Candle.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,6 +162,8 @@
 		86D2EC1E16401AAD002428F1 /* Candle */ = {
 			isa = PBXGroup;
 			children = (
+				868F31B11709DAE000AAC156 /* TBXML.h */,
+				868F31AF1709DAC500AAC156 /* TBXML.m */,
 				86D2EC2716401AAD002428F1 /* AppDelegate.h */,
 				86D2EC2816401AAD002428F1 /* AppDelegate.m */,
 				86D2EC3016401AAE002428F1 /* MainStoryboard_iPhone.storyboard */,
@@ -174,6 +182,8 @@
 				861F633E16AAFFDC00AB185A /* NSString+ParsingExtensions.h */,
 				86881F0316B7F9EC004DA126 /* Reachability.h */,
 				86881F0416B7F9ED004DA126 /* Reachability.m */,
+				868F31B21709DB9500AAC156 /* XMLHandler.h */,
+				868F31B31709DB9500AAC156 /* XMLHandler.m */,
 				861F633F16AAFFDC00AB185A /* NSString+ParsingExtensions.m */,
 				868CF7641662DFCC00DBD9BC /* Predmet.h */,
 				868CF7651662DFCC00DBD9BC /* Predmet.m */,
@@ -343,6 +353,8 @@
 				868CF7661662DFCC00DBD9BC /* Predmet.m in Sources */,
 				861F634016AAFFDC00AB185A /* NSString+ParsingExtensions.m in Sources */,
 				86881F0516B7F9ED004DA126 /* Reachability.m in Sources */,
+				868F31B01709DAC500AAC156 /* TBXML.m in Sources */,
+				868F31B41709DB9500AAC156 /* XMLHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
