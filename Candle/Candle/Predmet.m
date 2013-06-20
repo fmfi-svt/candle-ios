@@ -11,7 +11,8 @@
 @implementation Predmet
 
 -(id)initWithName:(NSNumber*)aPredmetId
-          andName:(NSString*)aName andRoom:(NSString *)aRoom andDay:(NSNumber *)aDay andStart:(NSString *)aStart andClassLength:(NSNumber *)aClassLength
+          andName:(NSString*)aName andRoom:(NSString *)aRoom andDay:(NSNumber *)aDay andStart:(NSString *)aStart andEnd:(NSString*)aEnd andClassLength:(NSNumber *)aClassLength andType:(NSString*)aType
+      andTeachers:(NSString *)aTeachers
 {
     self = [super init];
     if(self){
@@ -20,13 +21,16 @@
         _room = aRoom;
         _day = aDay;
         _start = aStart;
+        _end = aEnd;
         _classLength = aClassLength;
+        _type = aType;
+        _teachers = aTeachers;
         
     }
     return self;
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat: @"predmetId : %@ \r name : %@ \r room : %@ \r day: %@ \r start : %@ \r classLength : %@", self.predmetId, self.name, self.room, self.day, self.start, self.classLength];
+    return [NSString stringWithFormat: @"predmetId : %@ \r name : %@ \r room : %@ \r day: %@ \r start : %@ \r end : %@ \r classLength : %@ type : %@ \r teachers : %@ \r" , self.predmetId, self.name, self.room, self.day, self.start, self.end, self.classLength, self.type, self.teachers];
 }
 @end

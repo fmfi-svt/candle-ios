@@ -15,19 +15,22 @@
 @property(readwrite, retain) NSString *room;
 @property(readwrite, retain) NSNumber *day;
 @property(readwrite, retain) NSString *start;
+@property(readwrite, retain) NSString *end;
 @property(readwrite, retain) NSNumber *classLength;
+@property(readwrite, retain) NSString *teachers;
+@property(readwrite, retain) NSString *type;
 
-/*
- neviem ako je to originalne uskladnene,
- tiez ci cas je rozdeleny na hodinu a minuty alebo sa to vzdy parsuje
- alebo ako nejaky integer
- */
+
 -(id)initWithName:(NSNumber*)aPredmetId
         andName:(NSString*)aName
         andRoom:(NSNumber*)aRoom
         andDay:(NSNumber*)aDay
         andStart:(NSString*)aStart
-        andClassLength:(NSNumber*)aClassLength;
+        andEnd:(NSString*)aEnd
+        andClassLength:(NSNumber*)aClassLength
+        andType:(NSString*)aType
+        andTeachers:(NSString *)aTeachers
+;
 
 
 - (NSString *)description;
