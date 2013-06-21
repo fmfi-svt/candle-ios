@@ -10,19 +10,16 @@
 
 @implementation Predmet
 
--(id)initWithName:(NSNumber*)aPredmetId
-          andName:(NSString*)aName andRoom:(NSString *)aRoom andDay:(NSNumber *)aDay andStart:(NSString *)aStart andEnd:(NSString*)aEnd andClassLength:(NSNumber *)aClassLength andType:(NSString*)aType
-      andTeachers:(NSString *)aTeachers
+-(id)initWithName:(NSString*)aName andRoom:(NSString *)aRoom andDay:(NSNumber *)aDay andStart:(NSString *)aStart andEnd:(NSString*)aEnd andDuration:(NSNumber *)aDuration andType:(NSString*)aType andTeachers:(NSString *)aTeachers
 {
     self = [super init];
     if(self){
-        _predmetId = aPredmetId;
         _name =	aName;
         _room = aRoom;
         _day = aDay;
         _start = aStart;
         _end = aEnd;
-        _classLength = aClassLength;
+        _duration = aDuration;
         _type = aType;
         _teachers = aTeachers;
         
@@ -31,6 +28,6 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat: @"predmetId : %@ \r name : %@ \r room : %@ \r day: %@ \r start : %@ \r end : %@ \r classLength : %@ type : %@ \r teachers : %@ \r" , self.predmetId, self.name, self.room, self.day, self.start, self.end, self.classLength, self.type, self.teachers];
+    return [NSString stringWithFormat: @"name : %@ \r room : %@ \r day: %@ \r start : %@ \r end : %@ \r classLength : %@ type : %@ \r teachers : %@ \r" , self.name, self.room, self.day, self.start, self.end, self.duration, self.type, self.teachers];
 }
 @end

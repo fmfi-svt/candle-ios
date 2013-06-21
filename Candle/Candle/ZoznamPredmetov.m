@@ -93,7 +93,7 @@
         predm.room = [item objectAtIndex:4];
         predm.name = [item objectAtIndex:6];
         cislo = (int)[[item objectAtIndex:3] characterAtIndex:0]-48;
-        predm.classLength = [NSNumber numberWithInt:cislo];
+        predm.duration = [NSNumber numberWithInt:cislo];
         
         [self.predmety addObject:predm];
     }
@@ -134,7 +134,7 @@
                 sqlite3_bind_text(insert_statement, 2, [predm.room UTF8String],-1, SQLITE_TRANSIENT);
                 sqlite3_bind_int(insert_statement, 3, [predm.day intValue]);
                 sqlite3_bind_int(insert_statement, 4, [predm.start intValue]);
-                sqlite3_bind_int(insert_statement, 5, [predm.classLength intValue]);
+                sqlite3_bind_int(insert_statement, 5, [predm.duration intValue]);
         
                 // Execute the insert
                 if (sqlite3_step(insert_statement) != SQLITE_DONE) {
@@ -179,7 +179,7 @@
                         predm.room = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement,2)];
                         predm.day = [NSNumber numberWithInt: sqlite3_column_int(sqlStatement, 3)];
                         predm.start = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement,4)];
-                        predm.classLength = [NSNumber numberWithInt: sqlite3_column_int(sqlStatement,5)];
+                        predm.duration = [NSNumber numberWithInt: sqlite3_column_int(sqlStatement,5)];
                         
                         [Zoznam addObject:predm];
                         [_predmety addObject:predm];

@@ -10,19 +10,17 @@
 
 @interface Predmet : NSObject{
 }
-@property(readwrite, retain) NSNumber *predmetId;
 @property(readwrite, retain) NSString *name;
 @property(readwrite, retain) NSString *room;
 @property(readwrite, retain) NSNumber *day;
 @property(readwrite, retain) NSString *start;
 @property(readwrite, retain) NSString *end;
-@property(readwrite, retain) NSNumber *classLength;
+@property(readwrite, retain) NSNumber *duration;
 @property(readwrite, retain) NSString *teachers;
 @property(readwrite, retain) NSString *type;
 
 
--(id)initWithName:(NSNumber*)aPredmetId
-        andName:(NSString*)aName
+-(id)initWithName:(NSString*)aName
         andRoom:(NSNumber*)aRoom
         andDay:(NSNumber*)aDay
         andStart:(NSString*)aStart

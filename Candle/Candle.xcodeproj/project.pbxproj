@@ -16,6 +16,8 @@
 		868CF7661662DFCC00DBD9BC /* Predmet.m in Sources */ = {isa = PBXBuildFile; fileRef = 868CF7651662DFCC00DBD9BC /* Predmet.m */; };
 		868F31B01709DAC500AAC156 /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 868F31AF1709DAC500AAC156 /* TBXML.m */; };
 		868F31B41709DB9500AAC156 /* XMLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 868F31B31709DB9500AAC156 /* XMLHandler.m */; };
+		86994238177466B1008D0F63 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 86994237177466B1008D0F63 /* DBManager.m */; };
+		8699423B17746938008D0F63 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = 8699423A17746938008D0F63 /* Database.m */; };
 		869D6A0716A721A9004553CB /* 20-gear2.png in Resources */ = {isa = PBXBuildFile; fileRef = 869D6A0516A721A9004553CB /* 20-gear2.png */; };
 		869D6A0816A721A9004553CB /* 140-gradhat.png in Resources */ = {isa = PBXBuildFile; fileRef = 869D6A0616A721A9004553CB /* 140-gradhat.png */; };
 		86D2EC1916401AAD002428F1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86D2EC1816401AAD002428F1 /* UIKit.framework */; };
@@ -68,6 +70,10 @@
 		868F31B11709DAE000AAC156 /* TBXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBXML.h; sourceTree = "<group>"; };
 		868F31B21709DB9500AAC156 /* XMLHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLHandler.h; sourceTree = "<group>"; };
 		868F31B31709DB9500AAC156 /* XMLHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLHandler.m; sourceTree = "<group>"; };
+		86994236177466B1008D0F63 /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
+		86994237177466B1008D0F63 /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
+		8699423917746938008D0F63 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
+		8699423A17746938008D0F63 /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Database.m; sourceTree = "<group>"; };
 		869D6A0516A721A9004553CB /* 20-gear2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "20-gear2.png"; sourceTree = "<group>"; };
 		869D6A0616A721A9004553CB /* 140-gradhat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "140-gradhat.png"; sourceTree = "<group>"; };
 		86D2EC1416401AAD002428F1 /* Candle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Candle.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -178,6 +184,8 @@
 				86D2EC4216401AAE002428F1 /* second@2x.png */,
 				86D2EC1F16401AAD002428F1 /* Supporting Files */,
 				868CF7601662D53C00DBD9BC /* ZoznamPredmetov.h */,
+				86994236177466B1008D0F63 /* DBManager.h */,
+				86994237177466B1008D0F63 /* DBManager.m */,
 				868CF7611662D53C00DBD9BC /* ZoznamPredmetov.m */,
 				861F633E16AAFFDC00AB185A /* NSString+ParsingExtensions.h */,
 				86881F0316B7F9EC004DA126 /* Reachability.h */,
@@ -187,6 +195,8 @@
 				861F633F16AAFFDC00AB185A /* NSString+ParsingExtensions.m */,
 				868CF7641662DFCC00DBD9BC /* Predmet.h */,
 				868CF7651662DFCC00DBD9BC /* Predmet.m */,
+				8699423917746938008D0F63 /* Database.h */,
+				8699423A17746938008D0F63 /* Database.m */,
 			);
 			path = Candle;
 			sourceTree = "<group>";
@@ -355,6 +365,8 @@
 				86881F0516B7F9ED004DA126 /* Reachability.m in Sources */,
 				868F31B01709DAC500AAC156 /* TBXML.m in Sources */,
 				868F31B41709DB9500AAC156 /* XMLHandler.m in Sources */,
+				86994238177466B1008D0F63 /* DBManager.m in Sources */,
+				8699423B17746938008D0F63 /* Database.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
