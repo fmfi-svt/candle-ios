@@ -20,8 +20,6 @@
 -(BOOL) deleteDataFromDB;
 -(BOOL) deleteDatabase;
 
--(BOOL) insertTable:(NSString*) query;
-
 -(NSArray *) searchLessonsByRoom:(NSString*)room;
 -(NSArray *) searchLessonsByClass:(NSString*) kruzok;
 -(NSArray *) searchLessonsByTeacher:(NSString*) priezvisko meno:(NSString*)meno;
@@ -34,7 +32,6 @@
 -(NSArray *)getSimiliarTeachers:(NSString*) teacher;
 -(NSArray *)getSimilarRooms:(NSString*) room;
 -(NSArray *)getSimilarClass:(NSString*) clas;
--(NSArray *)searchByQuery:(NSString*) query;
 -(void) closeDB;
 
 @end

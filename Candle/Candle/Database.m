@@ -94,7 +94,7 @@ static  NSString *COLUMN_INFO_SEMESTER = @"semester";
             NSString *create_query = [NSString stringWithFormat:@"CREATE TABLE %@(%@ TEXT,%@ TEXT,%@ TEXT,%@ TEXT,%@ TEXT,%@ TEXT,%@ TEXT,%@ TEXT,%@ TEXT,%@ TEXT,%@ TEXT,%@ TEXT,%@ TEXT,%@ TEXT,%@ TEXT);",TB_HODINY_NAME,COLUMN_HODINY_ID,COLUMN_HODINY_DEN,COLUMN_HODINY_ZACIATOK,COLUMN_HODINY_KONIEC,COLUMN_HODINY_MIESTNOST,COLUMN_HODINY_TRVANIE,COLUMN_HODINY_PREDMET,COLUMN_HODINY_UCITELIA,COLUMN_HODINY_KRUZKY,COLUMN_HODINY_TYP,COLUMN_HODINY_KOD_PREDMETU,COLUMN_HODINY_KREDITY,COLUMN_HODINY_ROZSAH,COLUMN_HODINY_KAPACITA_MIESTNOSTI,COLUMN_HODINY_TYP_MIESTRNOSTI];
             const char *sql_stmt = [create_query cStringUsingEncoding:NSUTF8StringEncoding];
             
-            NSLog(create_query);
+            NSLog(@"CREATE query: %@",create_query);
             
             
          	if (sqlite3_exec(database, sql_stmt, NULL, NULL, &errMsg)
@@ -227,8 +227,8 @@ static  NSString *COLUMN_INFO_SEMESTER = @"semester";
                 NSString *teachers = [[NSString alloc] initWithUTF8String:(const char *) sqlite3_column_text(statement, 7)];
                 
                 
-                Predmet *predmet = [Predmet initWithName:name andRoom:room andDay:day andStart:start andEnd:end andDuration:duration andType:type andTeachers:teachers];
-                NSLog(predmet);
+                Predmet *predmet = [[Predmet alloc] initWithName:name andRoom:room andDay:day andStart:start andEnd:end andDuration:duration andType:type andTeachers:teachers];
+                NSLog(@"predmety podla roomky: %@",predmet);
                 [resultArray addObject:predmet];
                 return resultArray;
             }
@@ -266,8 +266,8 @@ static  NSString *COLUMN_INFO_SEMESTER = @"semester";
                  NSString *teachers = [[NSString alloc] initWithUTF8String:(const char *) sqlite3_column_text(statement, 7)];
                
                 
-                Predmet *predmet = [Predmet initWithName:name andRoom:room andDay:day andStart:start andEnd:end andDuration:duration andType:type andTeachers:teachers];
-                NSLog(predmet);
+                Predmet *predmet = [[Predmet alloc ]initWithName:name andRoom:room andDay:day andStart:start andEnd:end andDuration:duration andType:type andTeachers:teachers];
+                NSLog(@"predmety podla class: %@",predmet);
                 [resultArray addObject:predmet];
                 return resultArray;
             }
@@ -303,8 +303,8 @@ static  NSString *COLUMN_INFO_SEMESTER = @"semester";
                 NSString *name = [[NSString alloc] initWithUTF8String:(const char *) sqlite3_column_text(statement, 6)];
                 NSString *teachers = [[NSString alloc] initWithUTF8String:(const char *) sqlite3_column_text(statement, 7)];
                 
-                Predmet *predmet = [Predmet initWithName:name andRoom:room andDay:day andStart:start andEnd:end andDuration:duration andType:type andTeachers:teachers];
-                NSLog(predmet);
+                Predmet *predmet = [[Predmet alloc ] initWithName:name andRoom:room andDay:day andStart:start andEnd:end andDuration:duration andType:type andTeachers:teachers];
+                NSLog(@"predmety podla teacher: %@",predmet);
                 [resultArray addObject:predmet];
                 return resultArray;
             }
@@ -324,7 +324,7 @@ static  NSString *COLUMN_INFO_SEMESTER = @"semester";
         NSString *querySQL = [NSString stringWithFormat:@"SELECT * FROM %@",TB_INFO];
                         
         const char *query_stmt = [querySQL UTF8String];
-        NSMutableArray *resultArray = [[NSMutableArray alloc]init];
+//        NSMutableArray *resultArray = [[NSMutableArray alloc]init];
         if (sqlite3_prepare_v2(database,
                                query_stmt, -1, &statement, NULL) == SQLITE_OK)
         {
@@ -370,7 +370,7 @@ static  NSString *COLUMN_INFO_SEMESTER = @"semester";
                 NSString *fav = [[NSString alloc] initWithUTF8String:(const char *) sqlite3_column_text(statement, 0)];
                 
                 
-                NSLog(fav);
+                NSLog(@"Fav>%@",fav);
                 [resultArray addObject:fav];
                 return resultArray;
             }
@@ -426,7 +426,7 @@ static  NSString *COLUMN_INFO_SEMESTER = @"semester";
                 NSString *room = [[NSString alloc] initWithUTF8String:(const char *) sqlite3_column_text(statement, 0)];
                 
                 
-                NSLog(room);
+                NSLog(@"podobna roomka %@",room);
                 [resultArray addObject:room];
                 return resultArray;
             }
@@ -464,6 +464,13 @@ static  NSString *COLUMN_INFO_SEMESTER = @"semester";
         }
     }
     return nil;
+}
+
+-(void) closeDB{
+    const char *dbpath = [databasePath UTF8String];
+    if (sqlite3_open(dbpath, &database) == SQLITE_OK){
+        sqlite3_close(database);
+    }
 }
 
 
