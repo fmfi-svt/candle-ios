@@ -12,7 +12,7 @@
 }
 @property(readwrite, retain) NSString *name;
 @property(readwrite, retain) NSString *room;
-@property(readwrite, retain) NSNumber *day;
+@property(readwrite, retain) NSString *day;
 @property(readwrite, retain) NSString *start;
 @property(readwrite, retain) NSString *end;
 @property(readwrite, retain) NSNumber *duration;
@@ -20,15 +20,7 @@
 @property(readwrite, retain) NSString *type;
 
 
--(id)initWithName:(NSString*)aName
-        andRoom:(NSNumber*)aRoom
-        andDay:(NSNumber*)aDay
-        andStart:(NSString*)aStart
-        andEnd:(NSString*)aEnd
-        andClassLength:(NSNumber*)aClassLength
-        andType:(NSString*)aType
-        andTeachers:(NSString *)aTeachers
-;
+-(id) initWithName:(NSString*)aName andRoom:(NSString *)aRoom andDay:(NSString *)aDay andStart:(NSString *)aStart andEnd:(NSString*)aEnd andDuration:(NSNumber *)aDuration andType:(NSString*)aType andTeachers:(NSString *)aTeachers;
 
 
 - (NSString *)description;

@@ -10,7 +10,7 @@
 
 @implementation Predmet
 
--(id)initWithName:(NSString*)aName andRoom:(NSString *)aRoom andDay:(NSNumber *)aDay andStart:(NSString *)aStart andEnd:(NSString*)aEnd andDuration:(NSNumber *)aDuration andType:(NSString*)aType andTeachers:(NSString *)aTeachers
+-(id) initWithName:(NSString*)aName andRoom:(NSString *)aRoom andDay:(NSString *)aDay andStart:(NSString *)aStart andEnd:(NSString*)aEnd andDuration:(NSNumber *)aDuration andType:(NSString*)aType andTeachers:(NSString *)aTeachers
 {
     self = [super init];
     if(self){

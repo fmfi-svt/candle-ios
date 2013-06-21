@@ -88,7 +88,7 @@
         NSArray *dniTyzdna = @[@"Po", @"Ut", @"Str", @"St", @"Pi"];
         int cislo = [dniTyzdna indexOfObject: den];        
         
-        predm.day = [NSNumber numberWithInt: cislo];
+        predm.day = [item objectAtIndex:0];;
         predm.start = [item objectAtIndex:1];
         predm.room = [item objectAtIndex:4];
         predm.name = [item objectAtIndex:6];
@@ -173,13 +173,12 @@
         
                 //
                 while (sqlite3_step(sqlStatement)==SQLITE_ROW) {
-                        Predmet *predm = [[Predmet alloc]init];
-                        predm.predmetId = [NSNumber numberWithInt: sqlite3_column_int(sqlStatement, 0)];
-                        predm.name = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement,1)];
-                        predm.room = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement,2)];
-                        predm.day = [NSNumber numberWithInt: sqlite3_column_int(sqlStatement, 3)];
-                        predm.start = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement,4)];
-                        predm.duration = [NSNumber numberWithInt: sqlite3_column_int(sqlStatement,5)];
+                        Predmet *predm = [[Predmet alloc]init];                        
+                        predm.name = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement,0)];
+                        predm.room = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement,1)];
+                        predm.day = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 2)];
+                        predm.start = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement,3)];
+                        predm.duration = [NSNumber numberWithInt: sqlite3_column_int(sqlStatement,4)];
                         
                         [Zoznam addObject:predm];
                         [_predmety addObject:predm];

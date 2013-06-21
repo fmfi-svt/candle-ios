@@ -40,8 +40,7 @@ static sqlite3_stmt *statement = nil;
         {
             char *errMsg;
             const char *sql_stmt =
-            "CREATE TABLE IF NOT EXISTS studentsDetail (regno integer
-            primary key, name text, department text, year text)";
+            "CREATE TABLE IF NOT EXISTS studentsDetail (regno integer primary key, name text, department text, year text)";
             if (sqlite3_exec(database, sql_stmt, NULL, NULL, &errMsg)
                 != SQLITE_OK)
             {
@@ -65,10 +64,7 @@ static sqlite3_stmt *statement = nil;
     const char *dbpath = [databasePath UTF8String];
     if (sqlite3_open(dbpath, &database) == SQLITE_OK)
     {
-        NSString *insertSQL = [NSString stringWithFormat:@"insert into
-                               studentsDetail (regno,name, department, year) values
-                               (\"%d\",\"%@\", \"%@\", \"%@\")",[registerNumber integerValue],
-                                name, department, year];
+        NSString *insertSQL = [NSString stringWithFormat:@"insert into studentsDetail (regno,name, department, year) values(\"%d\",\"%@\", \"%@\", \"%@\")",[registerNumber integerValue],name, department, year];
                                 const char *insert_stmt = [insertSQL UTF8String];
                                 sqlite3_prepare_v2(database, insert_stmt,-1, &statement, NULL);
                                 if (sqlite3_step(statement) == SQLITE_DONE)
@@ -89,8 +85,7 @@ static sqlite3_stmt *statement = nil;
             if (sqlite3_open(dbpath, &database) == SQLITE_OK)
             {
                 NSString *querySQL = [NSString stringWithFormat:
-                                      @"select name, department, year from studentsDetail where
-                                      regno=\"%@\"",registerNumber];
+                                      @"select name, department, year from studentsDetail where regno=\"%@\"",registerNumber];
                 const char *query_stmt = [querySQL UTF8String];
                 NSMutableArray *resultArray = [[NSMutableArray alloc]init];
                 if (sqlite3_prepare_v2(database,
@@ -118,3 +113,4 @@ static sqlite3_stmt *statement = nil;
             }
             return nil;
         }
+@end

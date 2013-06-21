@@ -183,20 +183,33 @@ static  NSString *COLUMN_INFO_SEMESTER = @"semester";
     return isSuccess;
 }
 
-
--(NSArray *) searchLessonsByRoom:(NSString*)room{
-    
-}
--(NSArray *) searchLessonsByClass:(NSString*) kruzok{
-}
-
--(NSArray *) searchLessonsByTeacher:(NSString*) priezvisko meno:(NSString*)meno{
+-(BOOL) deleteDataFromDB{
     const char *dbpath = [databasePath UTF8String];
     if (sqlite3_open(dbpath, &database) == SQLITE_OK)
     {
         NSString *querySQL = [NSString stringWithFormat:
-                              @"SELECT name, department, year from studentsDetail where
-                              regno=\"%@\"",registerNumber];
+                              @"DELETE FROM %@,%@,%@,%@",TB_HODINY_NAME,TB_HODKRUZOK,TB_HODUCITEL,TB_INFO];
+        const char *query_stmt = [querySQL UTF8String];
+        if (sqlite3_prepare_v2(database,query_stmt, -1, &statement, NULL) == SQLITE_OK){
+            while(sqlite3_step(statement) == SQLITE_ROW) {
+                NSLog(@"deleting");
+            }
+            return YES;
+        }
+    }
+    return NO;
+}
+-(BOOL) deleteDatabase{
+    return NO;
+}
+
+-(NSArray *) searchLessonsByRoom:(NSString*)room{
+    const char *dbpath = [databasePath UTF8String];
+    if (sqlite3_open(dbpath, &database) == SQLITE_OK)
+    {
+        NSString *querySQL = [NSString stringWithFormat:
+                              @"SELECT h.%@, h.%@, h.%@, h.%@, h.%@, h.%@, h.%@, h.%@ FROM %@ h, WHERE h.%@ ='%@' "
+                              ,COLUMN_HODINY_DEN,COLUMN_HODINY_ZACIATOK,COLUMN_HODINY_KONIEC,COLUMN_HODINY_TRVANIE,COLUMN_HODINY_MIESTNOST,COLUMN_HODINY_TYP,COLUMN_HODINY_PREDMET,COLUMN_HODINY_UCITELIA,TB_HODINY_NAME,COLUMN_HODINY_MIESTNOST,room];
         const char *query_stmt = [querySQL UTF8String];
         NSMutableArray *resultArray = [[NSMutableArray alloc]init];
         if (sqlite3_prepare_v2(database,
@@ -204,15 +217,95 @@ static  NSString *COLUMN_INFO_SEMESTER = @"semester";
         {
             if (sqlite3_step(statement) == SQLITE_ROW)
             {
-                NSString *name = [[NSString alloc] initWithUTF8String:
-                                  (const char *) sqlite3_column_text(statement, 0)];
-                [resultArray addObject:name];
-                NSString *department = [[NSString alloc] initWithUTF8String:
-                                        (const char *) sqlite3_column_text(statement, 1)];
-                [resultArray addObject:department];
-                NSString *year = [[NSString alloc]initWithUTF8String:
-                                  (const char *) sqlite3_column_text(statement, 2)];
-                [resultArray addObject:year];
+                NSString *day = [[NSString alloc] initWithUTF8String:(const char *) sqlite3_column_text(statement, 0)];
+                NSString *start = [[NSString alloc] initWithUTF8String:(const char *) sqlite3_column_text(statement, 1)];
+                NSString *end = [[NSString alloc] initWithUTF8String:(const char *) sqlite3_column_text(statement, 2)];
+                NSNumber *duration = [[NSNumber alloc] initWithInt: sqlite3_column_int(statement, 3)];
+                NSString *room = [[NSString alloc] initWithUTF8String:(const char *) sqlite3_column_text (statement, 4)];
+                NSString *type = [[NSString alloc] initWithUTF8String:(const char *) sqlite3_column_text(statement, 5)];
+                NSString *name = [[NSString alloc] initWithUTF8String:(const char *) sqlite3_column_text(statement, 6)];
+                NSString *teachers = [[NSString alloc] initWithUTF8String:(const char *) sqlite3_column_text(statement, 7)];
+                
+                
+                Predmet *predmet = [Predmet initWithName:name andRoom:room andDay:day andStart:start andEnd:end andDuration:duration andType:type andTeachers:teachers];
+                NSLog(predmet);
+                [resultArray addObject:predmet];
+                return resultArray;
+            }
+            else{
+                NSLog(@"Not found");
+                return nil;
+            }
+            sqlite3_reset(statement);
+        }
+    }
+    return nil;
+
+}
+-(NSArray *) searchLessonsByClass:(NSString*) kruzok{
+    const char *dbpath = [databasePath UTF8String];
+    if (sqlite3_open(dbpath, &database) == SQLITE_OK)
+    {
+        NSString *querySQL = [NSString stringWithFormat:
+                              @"SELECT h.%@, h.%@, h.%@, h.%@, h.%@, h.%@, h.%@, h.%@ FROM %@ h , %@ k WHERE h.%@ = k.%@ AND k.%@ = '%@'"
+                              ,COLUMN_HODINY_DEN,COLUMN_HODINY_ZACIATOK,COLUMN_HODINY_KONIEC,COLUMN_HODINY_TRVANIE,COLUMN_HODINY_MIESTNOST,COLUMN_HODINY_TYP,COLUMN_HODINY_PREDMET,COLUMN_HODINY_UCITELIA,TB_HODINY_NAME,TB_HODKRUZOK,COLUMN_HODINY_ID,COLUMN_HODKRUZOK_IDHODINY,COLUMN_HODKRUZOK_IDKRUZKU,kruzok];
+        const char *query_stmt = [querySQL UTF8String];
+        NSMutableArray *resultArray = [[NSMutableArray alloc]init];
+        if (sqlite3_prepare_v2(database,
+                               query_stmt, -1, &statement, NULL) == SQLITE_OK)
+        {
+            if (sqlite3_step(statement) == SQLITE_ROW)
+            {
+                 NSString *day = [[NSString alloc] initWithUTF8String:(const char *) sqlite3_column_text(statement, 0)];
+                 NSString *start = [[NSString alloc] initWithUTF8String:(const char *) sqlite3_column_text(statement, 1)];
+                 NSString *end = [[NSString alloc] initWithUTF8String:(const char *) sqlite3_column_text(statement, 2)];
+                 NSNumber *duration = [[NSNumber alloc] initWithInt: sqlite3_column_int(statement, 3)];
+                 NSString *room = [[NSString alloc] initWithUTF8String:(const char *) sqlite3_column_text (statement, 4)];
+                 NSString *type = [[NSString alloc] initWithUTF8String:(const char *) sqlite3_column_text(statement, 5)];
+                 NSString *name = [[NSString alloc] initWithUTF8String:(const char *) sqlite3_column_text(statement, 6)];
+                 NSString *teachers = [[NSString alloc] initWithUTF8String:(const char *) sqlite3_column_text(statement, 7)];
+               
+                
+                Predmet *predmet = [Predmet initWithName:name andRoom:room andDay:day andStart:start andEnd:end andDuration:duration andType:type andTeachers:teachers];
+                NSLog(predmet);
+                [resultArray addObject:predmet];
+                return resultArray;
+            }
+            else{
+                NSLog(@"Not found");
+                return nil;
+            }
+            sqlite3_reset(statement);
+        }
+    }
+    return nil;
+}
+-(NSArray *) searchLessonsByTeacher:(NSString*) priezvisko meno:(NSString*)meno{
+    const char *dbpath = [databasePath UTF8String];
+    if (sqlite3_open(dbpath, &database) == SQLITE_OK)
+    {
+        NSString *querySQL = [NSString stringWithFormat:
+                              @"SELECT h.%@, h.%@, h.%@, h.%@, h.%@, h.%@, h.%@, h.%@ FROM %@ h , %@ k WHERE k.%@ = h.%@ AND k.%@ = '%@' AND k.%@ = '%@'"
+                              ,COLUMN_HODINY_DEN,COLUMN_HODINY_ZACIATOK,COLUMN_HODINY_KONIEC,COLUMN_HODINY_TRVANIE,COLUMN_HODINY_MIESTNOST,COLUMN_HODINY_TYP,COLUMN_HODINY_PREDMET,COLUMN_HODINY_UCITELIA,TB_HODINY_NAME,TB_HODUCITEL,COLUMN_HODUCITEL_IDHODINY,COLUMN_HODINY_ID,COLUMN_HODUCITEL_PRIEZVISKO,priezvisko,COLUMN_HODUCITEL_MENO,meno];
+        const char *query_stmt = [querySQL UTF8String];
+        NSMutableArray *resultArray = [[NSMutableArray alloc]init];
+        if (sqlite3_prepare_v2(database,
+                               query_stmt, -1, &statement, NULL) == SQLITE_OK)
+        {
+            if (sqlite3_step(statement) == SQLITE_ROW)
+            {
+                NSString *day = [[NSString alloc] initWithUTF8String:(const char *) sqlite3_column_text(statement, 0)];
+                NSString *start = [[NSString alloc] initWithUTF8String:(const char *) sqlite3_column_text(statement, 1)];
+                NSString *end = [[NSString alloc] initWithUTF8String:(const char *) sqlite3_column_text(statement, 2)];
+                NSNumber *duration = [[NSNumber alloc] initWithInt: sqlite3_column_int(statement, 3)];
+                NSString *room = [[NSString alloc] initWithUTF8String:(const char *) sqlite3_column_text (statement, 4)];
+                NSString *type = [[NSString alloc] initWithUTF8String:(const char *) sqlite3_column_text(statement, 5)];
+                NSString *name = [[NSString alloc] initWithUTF8String:(const char *) sqlite3_column_text(statement, 6)];
+                NSString *teachers = [[NSString alloc] initWithUTF8String:(const char *) sqlite3_column_text(statement, 7)];
+                
+                Predmet *predmet = [Predmet initWithName:name andRoom:room andDay:day andStart:start andEnd:end andDuration:duration andType:type andTeachers:teachers];
+                NSLog(predmet);
+                [resultArray addObject:predmet];
                 return resultArray;
             }
             else{
@@ -237,15 +330,76 @@ static  NSString *COLUMN_INFO_SEMESTER = @"semester";
         {
             if (sqlite3_step(statement) == SQLITE_ROW)
             {
-                NSString *name = [[NSString alloc] initWithUTF8String:
-                                  (const char *) sqlite3_column_text(statement, 0)];
-                [resultArray addObject:name];
-                NSString *department = [[NSString alloc] initWithUTF8String:
-                                        (const char *) sqlite3_column_text(statement, 1)];
-                [resultArray addObject:department];
-                NSString *year = [[NSString alloc]initWithUTF8String:
-                                  (const char *) sqlite3_column_text(statement, 2)];
-                [resultArray addObject:year];
+               // co chceme vlastne zistovat?
+            }
+            else{
+                NSLog(@"Not found");
+                return nil;
+            }
+            sqlite3_reset(statement);
+        }
+    }
+    return nil;
+}
+
+-(BOOL)addFavouriteTimeTable:(NSString *)name{
+    const char *dbpath = [databasePath UTF8String];
+    if (sqlite3_open(dbpath, &database) == SQLITE_OK)
+    {
+        NSString *querySQL = [NSString stringWithFormat:@"INSERT INTO %@ VALUES (null, '%@')",TB_OBLUBENE,name];
+        const char *query_stmt = [querySQL UTF8String];
+        if (sqlite3_prepare_v2(database, query_stmt, -1, &statement, NULL) == SQLITE_OK)
+        {            
+            return YES;
+        }
+    }
+    return NO;
+}
+
+-(NSArray *)getNamesOfFavourites{
+    const char *dbpath = [databasePath UTF8String];
+    if (sqlite3_open(dbpath, &database) == SQLITE_OK)
+    {
+        NSString *querySQL = [NSString stringWithFormat: @"SELECT DISTINCT %@ FROM %@",COLUMN_OBLUBENE_NAME,TB_OBLUBENE];
+        const char *query_stmt = [querySQL UTF8String];
+        NSMutableArray *resultArray = [[NSMutableArray alloc]init];
+        if (sqlite3_prepare_v2(database, query_stmt, -1, &statement, NULL) == SQLITE_OK)
+        {
+            if (sqlite3_step(statement) == SQLITE_ROW)
+            {
+                NSString *fav = [[NSString alloc] initWithUTF8String:(const char *) sqlite3_column_text(statement, 0)];
+                
+                
+                NSLog(fav);
+                [resultArray addObject:fav];
+                return resultArray;
+            }
+            else{
+                NSLog(@"Not found");
+                return nil;
+            }
+            sqlite3_reset(statement);
+        }
+    }
+    return nil;
+}
+-(NSArray *)getSimiliarTeachers:(NSString*) teacher{
+    const char *dbpath = [databasePath UTF8String];
+    if (sqlite3_open(dbpath, &database) == SQLITE_OK)
+    {
+         NSString *querySQL = [NSString stringWithFormat:@"SELECT DISTINCT %@,%@ FROM %@ WHERE %@ LIKE '%@%%'", COLUMN_HODUCITEL_PRIEZVISKO,COLUMN_HODUCITEL_MENO,TB_HODUCITEL,COLUMN_HODUCITEL_PRIEZVISKO,teacher];
+        const char *query_stmt = [querySQL UTF8String];
+        NSMutableArray *resultArray = [[NSMutableArray alloc]init];
+        if (sqlite3_prepare_v2(database, query_stmt, -1, &statement, NULL) == SQLITE_OK)
+        {
+            if (sqlite3_step(statement) == SQLITE_ROW)
+            {
+                NSString *meno = [[NSString alloc] initWithUTF8String:(const char *) sqlite3_column_text(statement, 1)];
+                NSString *priezvisko = [[NSString alloc] initWithUTF8String:(const char *) sqlite3_column_text(statement, 0)];
+                NSString *teacher = [NSString stringWithFormat:@"%@ %@",meno,priezvisko];              
+                
+                
+                [resultArray addObject:teacher];
                 return resultArray;
             }
             else{
@@ -258,159 +412,60 @@ static  NSString *COLUMN_INFO_SEMESTER = @"semester";
     return nil;
 }
 
-	// vyhladavanie v databaze podla miestnosti
-	public Cursor searchLessonsByRoom(String room) {
-		database = dbHelper.getReadableDatabase();
-		final String MY_QUERY = "SELECT h." + COLUMN_HODINY_DEN + ", h."
-        + COLUMN_HODINY_ZACIATOK + ", h." + COLUMN_HODINY_KONIEC
-        + ", h." + COLUMN_HODINY_TRVANIE + ", h."
-        + COLUMN_HODINY_MIESTNOST + ", h." + COLUMN_HODINY_TYP + ", h."
-        + COLUMN_HODINY_PREDMET + ", h." + COLUMN_HODINY_UCITELIA
-        + " FROM " + TB_HODINY_NAME + " h WHERE " + " h."
-        + COLUMN_HODINY_MIESTNOST + " =\"" + room + "\" ";
-        
-		Cursor cursor = database.rawQuery(MY_QUERY, null);
-		Log.d("cursor searchLessonsByRoom", Integer.toString(cursor.getCount()));
-		database.close();
-		return cursor;
-	}
-    
-	// vyhladavanie v databaze podla kruzkov
-	public Cursor searchLessonsByClass(String kruzok) {
-		database = dbHelper.getReadableDatabase();
-		final String MY_QUERY = "SELECT h." + COLUMN_HODINY_DEN + ", h."
-        + COLUMN_HODINY_ZACIATOK + ", h." + COLUMN_HODINY_KONIEC
-        + ", h." + COLUMN_HODINY_TRVANIE + ", h."
-        + COLUMN_HODINY_MIESTNOST + ", h." + COLUMN_HODINY_TYP + ", h."
-        + COLUMN_HODINY_PREDMET + ", h." + COLUMN_HODINY_UCITELIA
-        + " FROM " + TB_HODINY_NAME + " h , " + TB_HODKRUZOK
-        + " k WHERE " + "h." + COLUMN_HODINY_ID + " = k."
-        + COLUMN_HODKRUZOK_IDHODINY + " AND k."
-        + COLUMN_HODKRUZOK_IDKRUZKU + " = \"" + kruzok + "\"";
-        
-		Cursor cursor = database.rawQuery(MY_QUERY, null);
-        
-		Log.d("cursor searchLessonsByClass",
-              Integer.toString(cursor.getCount()));
-		database.close();
-		return cursor;
-	}
-    
-	// PRIDAT POROVNANIIE AJ PODLA MENA NIE LEN PODLA PRIEZVISKA!!!!!!!!!!
-	// vyhladavanie v databaze podla ucitelov
-	public Cursor searchLessonsByTeacher(String priezvisko, String meno) {
-		database = dbHelper.getReadableDatabase();
-		final String MY_QUERY = "SELECT h." + COLUMN_HODINY_DEN + ", h."
-        + COLUMN_HODINY_ZACIATOK + ", h." + COLUMN_HODINY_KONIEC
-        + ", h." + COLUMN_HODINY_TRVANIE + ", h."
-        + COLUMN_HODINY_MIESTNOST + ", h." + COLUMN_HODINY_TYP + ", h."
-        + COLUMN_HODINY_PREDMET + ", h." + COLUMN_HODINY_UCITELIA
-        + " FROM " + TB_HODINY_NAME + " h , " + TB_HODUCITEL
-        + " k WHERE " + "k." + COLUMN_HODUCITEL_IDHODINY + " = h."
-        + COLUMN_HODINY_ID + " AND k." + COLUMN_HODUCITEL_PRIEZVISKO
-        + " = \"" + priezvisko + "\" AND k." + COLUMN_HODUCITEL_MENO
-        + " = \"" + meno + "\"";
-        
-		Cursor cursor = database.rawQuery(MY_QUERY, null);
-		Log.d("cursor searchLessonsByTeacher",
-              Integer.toString(cursor.getCount()));
-		database.close();
-		return cursor;
-	}
-    
-	public Cursor dajInfoRozvrhu() {
-		database = dbHelper.getWritableDatabase();
-		final String MY_QUERY = "SELECT * FROM " + TB_INFO;
-		Cursor cursor = database.rawQuery(MY_QUERY, null);
-		Log.d("cursor DBM", Integer.toString(cursor.getCount()));
-		database.close();
-		return cursor;
-	}
-    
-	// zmaze vsetky riadky tabuliek, ale zachova sa struktura = nevola sa
-	// onCreate!
-	public void vymazRiadkyDatabazy() {
-		database = dbHelper.getWritableDatabase();
-		database.delete(TB_HODINY_NAME, null, null);
-		database.delete(TB_HODKRUZOK, null, null);
-		database.delete(TB_HODUCITEL, null, null);
-		database.delete(TB_INFO, null, null);
-		database.close();
-	}
-    
-	public void insertTable(String string) {
-		database = dbHelper.getWritableDatabase();
-		database.execSQL(string);
-	}
-    
-	// testovanie tabuliek
-	public Cursor checkTable(String TB_NAME) {
-		database = dbHelper.getReadableDatabase();
-		final String MY_QUERY = "SELECT * FROM " + TB_NAME;
-        
-		Cursor cursor = database.rawQuery(MY_QUERY, null);
-		Log.d("cursor DBM", Integer.toString(cursor.getCount()));
-		database.close();
-		// cursor.moveToFirst();
-		// for (int i = 0; i < cursor.getCount(); i += 100) {
-		//
-		// for (int j = 0; j < cursor.getColumnCount(); j++) {
-		// Log.d("test",cursor.getColumnName(j) + " " +cursor.getString(j));
-		// }
-		// Log.d("test", "????????????????????????????");
-		// cursor.moveToNext();
-		// }
-		cursor.close();
-		return cursor;
-        
-	}
-    
-	// vymaze databazu aj zo strukturou
-	public void zmamDatabazu() {
-		context.deleteDatabase(DATABASE_NAME);
-	}
-    
-	public Cursor searchByQuery(String query) {
-		database = dbHelper.getWritableDatabase();
-		Cursor cursor = database.rawQuery(query, null);
-		Log.d("cursor DBM", Integer.toString(cursor.getCount()));
-		database.close();
-		return cursor;
-	}
-    
-	public Cursor getSimilarRooms(String room) {
-		final String MY_QUERY = "SELECT DISTINCT " + COLUMN_HODINY_MIESTNOST
-        + " FROM " + TB_HODINY_NAME + " WHERE "
-        + COLUMN_HODINY_MIESTNOST + " LIKE \"" + room + "%\"";
-		return searchByQuery(MY_QUERY);
-	}
-    
-	public Cursor getSimilarTeachers(String teacher) {
-		final String MY_QUERY = "SELECT DISTINCT "
-        + COLUMN_HODUCITEL_PRIEZVISKO + " , " + COLUMN_HODUCITEL_MENO
-        + " FROM " + TB_HODUCITEL + " WHERE "
-        + COLUMN_HODUCITEL_PRIEZVISKO + " LIKE \"" + teacher + "%\"";
-		return searchByQuery(MY_QUERY);
-	}
-    
-	public Cursor getSimilarClass(String string) {
-		final String MY_QUERY = "SELECT DISTINCT " + COLUMN_HODKRUZOK_IDKRUZKU
-        + " FROM " + TB_HODKRUZOK + " WHERE "
-        + COLUMN_HODKRUZOK_IDKRUZKU + " LIKE \"" + string + "%\"";
-		return searchByQuery(MY_QUERY);
-	}
-    
-	public void addFavoriteTimeTable(String name) {
-		final String MY_QUERY = "INSERT INTO " + TB_OBLUBENE
-        + " VALUES (null, " + name+ ")";
-		database.execSQL(MY_QUERY);
-	}
-    
-	public Cursor giveNamesFromFavorites() {
-		final String MY_QUERY = "SELECT DISTINCT " + COLUMN_OBLUBENE_NAME
-        + " FROM " + TB_OBLUBENE;
-		return searchByQuery(MY_QUERY);
-	}
+-(NSArray *)getSimilarRooms:(NSString*) room{
+    const char *dbpath = [databasePath UTF8String];
+    if (sqlite3_open(dbpath, &database) == SQLITE_OK)
+    {
+        NSString *querySQL = [NSString stringWithFormat:@"SELECT DISTINCT %@ FROM %@ WHERE %@ LIKE '%@%%'", COLUMN_HODINY_MIESTNOST,TB_HODINY_NAME,COLUMN_HODINY_MIESTNOST,room];
+        const char *query_stmt = [querySQL UTF8String];
+        NSMutableArray *resultArray = [[NSMutableArray alloc]init];
+        if (sqlite3_prepare_v2(database, query_stmt, -1, &statement, NULL) == SQLITE_OK)
+        {
+            if (sqlite3_step(statement) == SQLITE_ROW)
+            {
+                NSString *room = [[NSString alloc] initWithUTF8String:(const char *) sqlite3_column_text(statement, 0)];
+                
+                
+                NSLog(room);
+                [resultArray addObject:room];
+                return resultArray;
+            }
+            else{
+                NSLog(@"Not found");
+                return nil;
+            }
+            sqlite3_reset(statement);
+        }
+    }
+    return nil;
 }
+
+-(NSArray *)getSimilarClass:(NSString*) clas{
+    const char *dbpath = [databasePath UTF8String];
+    if (sqlite3_open(dbpath, &database) == SQLITE_OK)
+    {
+        NSString *querySQL = [NSString stringWithFormat:@"SELECT DISTINCT %@ FROM %@ WHERE %@ LIKE '%@%%'", COLUMN_HODKRUZOK_IDKRUZKU,TB_HODKRUZOK,COLUMN_HODKRUZOK_IDKRUZKU,clas];
+        const char *query_stmt = [querySQL UTF8String];
+        NSMutableArray *resultArray = [[NSMutableArray alloc]init];
+        if (sqlite3_prepare_v2(database, query_stmt, -1, &statement, NULL) == SQLITE_OK)
+        {
+            if (sqlite3_step(statement) == SQLITE_ROW)
+            {
+                NSString *similarClass = [[NSString alloc] initWithUTF8String:(const char *) sqlite3_column_text(statement, 0)];
+
+                [resultArray addObject:similarClass];
+                return resultArray;
+            }
+            else{
+                NSLog(@"Not found");
+                return nil;
+            }
+            sqlite3_reset(statement);
+        }
+    }
+    return nil;
+}
+
+
 
 @end
