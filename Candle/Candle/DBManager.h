@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
-
+#import "Database.h"
 @interface DBManager : NSObject
 {
     NSString *databasePath;
+    Database *database;
+    
 }
 
 

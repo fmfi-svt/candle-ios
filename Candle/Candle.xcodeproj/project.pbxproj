@@ -10,6 +10,7 @@
 		860F7881169CC062004A8389 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 860F7880169CC062004A8389 /* libsqlite3.0.dylib */; };
 		861F634016AAFFDC00AB185A /* NSString+ParsingExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 861F633F16AAFFDC00AB185A /* NSString+ParsingExtensions.m */; };
 		86571391169CB3230006F066 /* rozvrh.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 86571390169CB3230006F066 /* rozvrh.sqlite */; };
+		868711E71775ACAB00F99989 /* TimeTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 868711E61775ACAB00F99989 /* TimeTable.m */; };
 		86881F0516B7F9ED004DA126 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 86881F0416B7F9ED004DA126 /* Reachability.m */; };
 		86881F0816B801F9004DA126 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86881F0716B801F9004DA126 /* SystemConfiguration.framework */; };
 		868CF7621662D53C00DBD9BC /* ZoznamPredmetov.m in Sources */ = {isa = PBXBuildFile; fileRef = 868CF7611662D53C00DBD9BC /* ZoznamPredmetov.m */; };
@@ -59,6 +60,8 @@
 		861F633E16AAFFDC00AB185A /* NSString+ParsingExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ParsingExtensions.h"; sourceTree = "<group>"; };
 		861F633F16AAFFDC00AB185A /* NSString+ParsingExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ParsingExtensions.m"; sourceTree = "<group>"; };
 		86571390169CB3230006F066 /* rozvrh.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = rozvrh.sqlite; sourceTree = "<group>"; };
+		868711E51775ACAB00F99989 /* TimeTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeTable.h; sourceTree = "<group>"; };
+		868711E61775ACAB00F99989 /* TimeTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeTable.m; sourceTree = "<group>"; };
 		86881F0316B7F9EC004DA126 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		86881F0416B7F9ED004DA126 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		86881F0716B801F9004DA126 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -186,6 +189,8 @@
 				868CF7601662D53C00DBD9BC /* ZoznamPredmetov.h */,
 				868CF7611662D53C00DBD9BC /* ZoznamPredmetov.m */,
 				86994236177466B1008D0F63 /* DBManager.h */,
+				868711E51775ACAB00F99989 /* TimeTable.h */,
+				868711E61775ACAB00F99989 /* TimeTable.m */,
 				86994237177466B1008D0F63 /* DBManager.m */,
 				861F633E16AAFFDC00AB185A /* NSString+ParsingExtensions.h */,
 				86881F0316B7F9EC004DA126 /* Reachability.h */,
@@ -367,6 +372,7 @@
 				868F31B41709DB9500AAC156 /* XMLHandler.m in Sources */,
 				86994238177466B1008D0F63 /* DBManager.m in Sources */,
 				8699423B17746938008D0F63 /* Database.m in Sources */,
+				868711E71775ACAB00F99989 /* TimeTable.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
