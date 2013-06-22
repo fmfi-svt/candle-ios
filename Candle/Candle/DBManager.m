@@ -93,13 +93,53 @@ static sqlite3_stmt *statement = nil;
     return strings;
 }
 -(TimeTable *)getTimeTableAccordingTOString:(NSString *)string{
+    lessons = [[NSMutableArray alloc] init];
+    NSMutableString *idTimeTable = [[NSMutableString alloc] init];
+    NSString *stringParsed;
+    NSScanner *scan = [[NSScanner alloc] initWithString:string];
+//    if(![scan isAtEnd]){
+//        [idTimeTable appendFormat: @"Učiteľ: %@",string];
+//        stringParsed = [scan scanString:<#(NSString *)#> intoString:<#(NSString *__autoreleasing *)#>;
+//        if(scan.hasNext()){
+//            String stringParsed2 = scan.next();
+//            cursor = dbManager.searchLessonsByTeacher(stringParsed, stringParsed2);
+//        } else {
+//            //ak string je jedno slovo a zacina na pismeno tak je to miestnost
+//            if(Character.isLetter(string.charAt(0))){
+//                idTimetable = "Miestnosť: " + string;
+//                cursor = dbManager.searchLessonsByRoom(string);
+//            } else {
+//                // ostava kruzok
+//                idTimetable = "Krúžok: " + string;
+//                cursor = dbManager.searchLessonsByClass(string);
+//            }
+//        }
+//    } else {
+//        Log.d("parsovanie stringu", "prazdny string");
+//    }
+//    Log.d("according string cursor", "pocet riadkov = " + cursor.getCount());
+//    cursor.moveToFirst();
+//    while (!cursor.isAfterLast()) {
+//        Lesson lesson = new Lesson(cursor.getString(0),
+//                                   cursor.getString(1), cursor.getString(2),
+//                                   Integer.parseInt(cursor.getString(3)), cursor.getString(4),
+//                                   cursor.getString(5), cursor.getString(6),
+//                                   cursor.getString(7));
+//        lessons.add(lesson);
+//        cursor.moveToNext();
+//    }
+//    cursor.close();
+//    
+    TimeTable *tt = [[TimeTable alloc] initWithLessons:lessons];
+    tt.idTimetable = idTimeTable;
+    return tt;
     
 }
 -(void)addFavouriteTimeTable:(NSString *)name{
-    
+    [dbMan addFavouriteTimeTable:name];
 }
 -(NSArray *)getStringsFromFavourites:(NSString *)string{
-    
+    return [dbMan getNamesOfFavourites];
 }
 
 
