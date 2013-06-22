@@ -9,16 +9,34 @@
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
 #import "Database.h"
+#import "TimeTable.h"
+#import "Reachability.h"
 @interface DBManager : NSObject
 {
     NSString *databasePath;
-    Database *database;
-    
+    Database *dbMan;
+    TimeTable *timeTable;
+    NSMutableArray *lessons;
 }
 
 
-+(DBManager*)getSharedInstance;
+-(id)init;
+
++(DBManager *)getSharedInstance;
 -(BOOL)createDB;
+
+-(NSString *)getVersionFromString:(NSString *)input;
+-(BOOL)isConnectedToInternet;
+-(NSString *)checkVersionFile;
+-(NSString *)checkVersionInternet;
+-(void)parse:(NSFileHandle *)file;
+-(NSArray *)getSimiliarStrings:(NSString *)string;
+-(TimeTable *)getTimeTableAccordingTOString:(NSString *)string;
+-(void)addFavouriteTimeTable:(NSString *)name;
+-(NSArray *)getStringsFromFavourites:(NSString *)string;
+
+
+
 -(BOOL) saveData:(NSString*)registerNumber name:(NSString*)name
       department:(NSString*)department year:(NSString*)year;
 -(NSArray*) findByRegisterNumber:(NSString*)registerNumber;

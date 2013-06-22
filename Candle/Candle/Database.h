@@ -29,7 +29,7 @@
 -(BOOL)addFavouriteTimeTable:(NSString*) name;
 
 -(NSArray *)getNamesOfFavourites;
--(NSArray *)getSimiliarTeachers:(NSString*) teacher;
+-(NSArray *)getSimilarTeachers:(NSString*) teacher;
 -(NSArray *)getSimilarRooms:(NSString*) room;
 -(NSArray *)getSimilarClass:(NSString*) clas;
 -(void) closeDB;

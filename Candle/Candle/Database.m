@@ -383,7 +383,7 @@ static  NSString *COLUMN_INFO_SEMESTER = @"semester";
     }
     return nil;
 }
--(NSArray *)getSimiliarTeachers:(NSString*) teacher{
+-(NSArray *)getSimilarTeachers:(NSString*) teacher{
     const char *dbpath = [databasePath UTF8String];
     if (sqlite3_open(dbpath, &database) == SQLITE_OK)
     {
